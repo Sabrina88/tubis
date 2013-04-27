@@ -44,7 +44,7 @@ public class StartPoint extends Activity{
 		@Override
 		public void onClick(View v) {
 			try{
-			Intent openStartingPoint = new Intent("com.example.test.MAINACTIVITY");
+			Intent openStartingPoint = new Intent("com.example.test.SEARCH");
 			startActivity(openStartingPoint);
 			}catch(Exception e){
 				System.out.println("SFGSG");
