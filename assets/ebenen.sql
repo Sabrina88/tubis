@@ -21,12 +21,89 @@
 --
 
 -- --------------------------------------------------------
+--
+-- Tabellenstruktur für Tabelle `hauptkategorien`
+--
 
-
+DROP TABLE IF EXISTS `hauptkategorien`;
+CREATE TABLE IF NOT EXISTS `hauptkategorien` (
+`_id` int(9) NOT NULL,
+`hptkbezeichnung` varchar(99) NOT NULL,
+`hptkstandort` varchar(9) NOT NULL);
+--
+-- Daten für Tabelle `hauptkategorien`
+--
+INSERT INTO `hauptkategorien` (`_id`, `hptkbezeichnung`, `hptkstandort`) VALUES
+(10000000,'Bohren', '2');
+INSERT INTO `hauptkategorien` (`_id`, `hptkbezeichnung`, `hptkstandort`) VALUES
+(80000000,'Beleuchtung', '1');
+INSERT INTO `hauptkategorien` (`_id`, `hptkbezeichnung`, `hptkstandort`) VALUES
+(20000000,'Schrauben', '4');
+INSERT INTO `hauptkategorien` (`_id`, `hptkbezeichnung`, `hptkstandort`) VALUES
+(30000000,'Sägen/Schneiden', '5');
+INSERT INTO `hauptkategorien` (`_id`, `hptkbezeichnung`, `hptkstandort`) VALUES
+(40000000,'Sanitär','6');
+INSERT INTO `hauptkategorien` (`_id`, `hptkbezeichnung`, `hptkstandort`) VALUES
+(50000000,'Garten','9');
+INSERT INTO `hauptkategorien` (`_id`, `hptkbezeichnung`, `hptkstandort`) VALUES
+(60000000,'Boden','7');
+INSERT INTO `hauptkategorien` (`_id`, `hptkbezeichnung`, `hptkstandort`) VALUES
+(70000000,'Tapezieren/Streichen','8');
+INSERT INTO `hauptkategorien` (`_id`, `hptkbezeichnung`, `hptkstandort`) VALUES
+(90000000,'Reinigen', '3');
+INSERT INTO `hauptkategorien` (`_id`, `hptkbezeichnung`, `hptkstandort`) VALUES
+(100000000, 'Tierbedarf/Pflanzen','10');
+INSERT INTO `hauptkategorien` (`_id`, `hptkbezeichnung`, `hptkstandort`) VALUES
+(110000000, 'Elektrik/Elektronik','3');
+-- --------------------------------------------------------
 -- CREATE TABLE android_metadata (locale TEXT DEFAULT 'en_US');
 -- INSERT INTO android_metadata(locale) VALUES ('en_US');
+--
+-- Tabellenstruktur für Tabelle `unterkategorien`
+--
+DROP TABLE IF EXISTS `unterkategorien`;
+CREATE TABLE IF NOT EXISTS `unterkategorien` (
+  `_id` int(11) NOT NULL,
+  `untkbezeichnung` varchar(99) NOT NULL,
+  `untkstandort` varchar(11) NOT NULL,
+  fk_hauptkategorien int(11) NOT NULL, 
+  PRIMARY KEY (`_id`)
+);
 
+--
+-- Daten für Tabelle `unterkategorien`
+--
 
+INSERT INTO `unterkategorien` (`_id`, `untkbezeichnung`, `untkstandort`,`fk_hauptkategorien`) VALUES
+(10100000, 'Bohrer', '2CDE',10000000);
+INSERT INTO `unterkategorien` (`_id`, `untkbezeichnung`, `untkstandort`,`fk_hauptkategorien`) VALUES
+(10200000, 'Bohrmaschinen', '3CDE',10000000);
+INSERT INTO `unterkategorien` (`_id`, `untkbezeichnung`, `untkstandort`,`fk_hauptkategorien`) VALUES
+(10300000, 'Zubehör', '2CDE',10000000);
+INSERT INTO `unterkategorien` (`_id`, `untkbezeichnung`, `untkstandort`,`fk_hauptkategorien`) VALUES
+(20100000, 'Schrauben', '4AB',2000000);
+INSERT INTO `unterkategorien` (`_id`, `untkbezeichnung`, `untkstandort`,`fk_hauptkategorien`) VALUES
+(20200000, 'Muttern', '4AB',2000000);
+INSERT INTO `unterkategorien` (`_id`, `untkbezeichnung`, `untkstandort`,`fk_hauptkategorien`) VALUES
+(20300000, 'Unterlegscheiben', '4AB',2000000);
+INSERT INTO `unterkategorien` (`_id`, `untkbezeichnung`, `untkstandort`,`fk_hauptkategorien`) VALUES
+(20400000, 'Sicherungen', '4AB',2000000);
+INSERT INTO `unterkategorien` (`_id`, `untkbezeichnung`, `untkstandort`,`fk_hauptkategorien`) VALUES
+(20500000, 'Schraubenzieher', '5AB',2000000);
+INSERT INTO `unterkategorien` (`_id`, `untkbezeichnung`, `untkstandort`,`fk_hauptkategorien`) VALUES
+(20600000, 'Schlüssel', '5AB',2000000);
+INSERT INTO `unterkategorien` (`_id`, `untkbezeichnung`, `untkstandort`,`fk_hauptkategorien`) VALUES
+(20700000, 'Akkuschrauber', '3C',2000000);
+INSERT INTO `unterkategorien` (`_id`, `untkbezeichnung`, `untkstandort`,`fk_hauptkategorien`) VALUES
+(20800000, 'Bits/Nüsse', '5AB',2000000);
+INSERT INTO `unterkategorien` (`_id`, `untkbezeichnung`, `untkstandort`,`fk_hauptkategorien`) VALUES
+(20900000, 'Zubehör', '5AB',2000000);
+INSERT INTO `unterkategorien` (`_id`, `untkbezeichnung`, `untkstandort`,`fk_hauptkategorien`) VALUES
+(80100000, 'Lampen', '1DE',8000000);
+INSERT INTO `unterkategorien` (`_id`, `untkbezeichnung`, `untkstandort`,`fk_hauptkategorien`) VALUES
+(80200000, 'Leuchtmittel', '1C',8000000);
+
+-- --------------------------------------------------------
 --
 -- Tabellenstruktur für Tabelle `artikel`
 --
@@ -47,29 +124,52 @@ CREATE TABLE IF NOT EXISTS `artikel` (
 --
 
 INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
-(10101001, '07B3', 'Holzbohrer 50x6', 1.99, 'holzbohrer',10101000),
-(10101002, '07B2', 'Holzbohrer 70x8', 2.99, 'holzbohrer',10101000),
-(10101003, '07B1', 'Holzbohrer 90x10', 2.99, 'holzbohrer',10101000),
-(10101004, '07A2', 'Holzbohrer 30x4', 1.49, 'holzbohrer',10101000),
-(10102001, '07A2', 'Stahlbohrer 50x7', 2.99, 'stahlbohrer',10102000),
-(10102002, '07A1', 'Stahlbohrer 70x9', 3.99, 'stahlbohrer',10102000),
-(10201001, '03C2', 'Bohrhammer Bosch PBH 2800 RE inkl. Flachmei&szlig;el', 140.99, 'bohrhammer',10201000),
-(10201002, '03C1', 'Bohrhammer Bosch PBH 3000-2 FRE ', 208.99, 'bohrhammer',10201000),
-(10201003, '03C3', 'Tischbohrmaschine Bosch PBD 40', 280.99, '',10201000),
-(10202001, '03D1', 'Schlagbohrmaschine Bosch PSB 500 RE', 55.99, 'schlagbohrmaschine',10202000),
-(10202002, '03D2', 'Schlagbohrmaschine Bosch PSB 750 RCE', 79.99, 'schlagbohrmaschine',10202000),
-(20105001, '04C2', 'Holzschraube Linsensenkkopf m. I-Stern 3,5 x 25 mm, DIN 95, Vernickelt, 200 Stück', 2.15, '',20105000),
-(20106001, '04A2', 'Spreizdübel Barracuda SD 8/40+S', 2.89, '',20106000),
-(20106002, '04A1', 'Spreizdübel Barracuda SD 6/30+S', 2.99, '',20106000),
-(20106003, '04B2', 'Allzweckdübel TRI 6/36 ', 2.99, '',20106000),
-(20201001, '04B3', 'Sechskantmutter selbstsichernd DIN 985, M3 galv.verzinkt, 100 Stück', 2.99, '',20201000),
-(80102001, '01D1', 'Halogen-Stehlampe Spider Glaskugel mit Chrom', 108.95, '',80102000),
-(80102002, '01D2', 'Halogen-Stehlampe sinned chrom mit Metallkopf', 158.9, '',80102000),
-(80102003, '01E1', 'Massive Halogen-Bodenleuchte 5-flg. Aiken ', 182, '',80102000),
-(80102004, '01E2', 'dimmbarer LED-Fluter mit Lesearm in Nickel matt, getrennt ', 219, '',80102000),
-(80102005, '01D3', 'Innovative LED-Stehleuchte inklusive Power LED ', 149.9, '',80102000),
-(80201001, '02A3', 'Halogenbirne E27 100W', 1.99, 'halogenbirne',80201001),
-(80201002, '02A2', 'Halogenbirne E27 60W', 1.99, 'halogenbirne',80201001),
+(10101001, '07B3', 'Holzbohrer 50x6', 1.99, 'holzbohrer',10101000);
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
+(10101002, '07B2', 'Holzbohrer 70x8', 2.99, 'holzbohrer',10101000);
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
+(10101003, '07B1', 'Holzbohrer 90x10', 2.99, 'holzbohrer',10101000);
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
+(10101004, '07A2', 'Holzbohrer 30x4', 1.49, 'holzbohrer',10101000);
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
+(10102001, '07A2', 'Stahlbohrer 50x7', 2.99, 'stahlbohrer',10102000);
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
+(10102002, '07A1', 'Stahlbohrer 70x9', 3.99, 'stahlbohrer',10102000);
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
+(10201001, '03C2', 'Bohrhammer Bosch PBH 2800 RE inkl. Flachmei&szlig;el', 140.99, 'bohrhammer',10201000);
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
+(10201002, '03C1', 'Bohrhammer Bosch PBH 3000-2 FRE ', 208.99, 'bohrhammer',10201000);
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
+(10201003, '03C3', 'Tischbohrmaschine Bosch PBD 40', 280.99, '',10201000);
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
+(10202001, '03D1', 'Schlagbohrmaschine Bosch PSB 500 RE', 55.99, 'schlagbohrmaschine',10202000);
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
+(10202002, '03D2', 'Schlagbohrmaschine Bosch PSB 750 RCE', 79.99, 'schlagbohrmaschine',10202000);
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
+(20105001, '04C2', 'Holzschraube Linsensenkkopf m. I-Stern 3,5 x 25 mm, DIN 95, Vernickelt, 200 Stück', 2.15, '',20105000);
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
+(20106001, '04A2', 'Spreizd�bel Barracuda SD 8/40+S', 2.89, '',20106000);
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
+(20106002, '04A1', 'Spreizd�bel Barracuda SD 6/30+S', 2.99, '',20106000);
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
+(20106003, '04B2', 'Allzweckdübel TRI 6/36 ', 2.99, '',20106000);
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
+(20201001, '04B3', 'Sechskantmutter selbstsichernd DIN 985, M3 galv.verzinkt, 100 Stück', 2.99, '',20201000);
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
+(80102001, '01D1', 'Halogen-Stehlampe Spider Glaskugel mit Chrom', 108.95, '',80102000);
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
+(80102002, '01D2', 'Halogen-Stehlampe sinned chrom mit Metallkopf', 158.9, '',80102000);
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
+(80102003, '01E1', 'Massive Halogen-Bodenleuchte 5-flg. Aiken ', 182, '',80102000);
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
+(80102004, '01E2', 'dimmbarer LED-Fluter mit Lesearm in Nickel matt, getrennt ', 219, '',80102000);
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
+(80102005, '01D3', 'Innovative LED-Stehleuchte inklusive Power LED ', 149.9, '',80102000);
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
+(80201001, '02A3', 'Halogenbirne E27 100W', 1.99, 'halogenbirne',80201001);
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
+(80201002, '02A2', 'Halogenbirne E27 60W', 1.99, 'halogenbirne',80201001);
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
 (80201003, '02A1', 'Halogenbirne E15 45W', 1.99, 'halogenbirne',80201001);
 
 -- --------------------------------------------------------
@@ -95,11 +195,16 @@ CREATE TABLE IF NOT EXISTS `bestellkopf` (
 --
 
 INSERT INTO `bestellkopf` (`_id`, `kundennr`, `tempkundennr`, `statnr`, `datum`, `uhrzeit`, `bestellwert`) VALUES
-(0, 9999, NULL, 0, '0000-00-00', '00:00:00', 0),
-(1, 0001, NULL, 0, '2012-12-29', '15:27:48', 7.57),
-(2, NULL, 0001, 0, '2013-01-14', '15:27:36', 9.95),
-(3, 0002, NULL, 0, '2012-12-23', '17:27:27', 0),
-(4, 0003, NULL, 0, '2012-12-28', '16:23:35', 11.36),
+(0, 9999, NULL, 0, '0000-00-00', '00:00:00', 0);
+INSERT INTO `bestellkopf` (`_id`, `kundennr`, `tempkundennr`, `statnr`, `datum`, `uhrzeit`, `bestellwert`) VALUES
+(1, 0001, NULL, 0, '2012-12-29', '15:27:48', 7.57);
+INSERT INTO `bestellkopf` (`_id`, `kundennr`, `tempkundennr`, `statnr`, `datum`, `uhrzeit`, `bestellwert`) VALUES
+(2, NULL, 0001, 0, '2013-01-14', '15:27:36', 9.95);
+INSERT INTO `bestellkopf` (`_id`, `kundennr`, `tempkundennr`, `statnr`, `datum`, `uhrzeit`, `bestellwert`) VALUES
+(3, 0002, NULL, 0, '2012-12-23', '17:27:27', 0);
+INSERT INTO `bestellkopf` (`_id`, `kundennr`, `tempkundennr`, `statnr`, `datum`, `uhrzeit`, `bestellwert`) VALUES
+(4, 0003, NULL, 0, '2012-12-28', '16:23:35', 11.36);
+INSERT INTO `bestellkopf` (`_id`, `kundennr`, `tempkundennr`, `statnr`, `datum`, `uhrzeit`, `bestellwert`) VALUES
 (5, 0004, NULL, 0, '0000-00-00', '00:00:00', 0);
 
 -- --------------------------------------------------------
@@ -121,40 +226,13 @@ CREATE TABLE IF NOT EXISTS `bestellpositionen` (
 --
 
 INSERT INTO `bestellpositionen` (`_id`, `bpos`, `artikelnr`, `menge`) VALUES
-(2, 1, 10101001, 5),
+(2, 1, 10101001, 5);
+INSERT INTO `bestellpositionen` (`_id`, `bpos`, `artikelnr`, `menge`) VALUES
 (1, 2, 10101001, 1);
 
 -- --------------------------------------------------------
 
---
--- Tabellenstruktur für Tabelle `hauptkategorien`
---
 
-DROP TABLE IF EXISTS `hauptkategorien`;
-CREATE TABLE IF NOT EXISTS `hauptkategorien` (
-  `_id` int(9) NOT NULL,
-  `hptkbezeichnung` varchar(99) NOT NULL,
-  `hptkstandort` varchar(9) NOT NULL
-);
-
---
--- Daten für Tabelle `hauptkategorien`
---
-
-INSERT INTO `hauptkategorien` (`_id`, `hptkbezeichnung`, `hptkstandort`) VALUES
-(10000000, 'Bohren', '2'),
-(80000000, 'Beleuchtung', '1'),
-(20000000, 'Schrauben', '4'),
-(30000000, 'Sägen/Schneiden', '5'),
-(40000000, 'Sanitär', '6'),
-(50000000, 'Garten', '9'),
-(60000000, 'Boden', '7'),
-(70000000, 'Tapezieren/Streichen', '8'),
-(90000000, 'Reinigen', '3'),
-(100000000, 'Tierbedarf/Pflanzen', '10'),
-(110000000, 'Elektrik/Elektronik', '3');
-
--- --------------------------------------------------------
 
 --
 -- Tabellenstruktur für Tabelle `produktkategorien`
@@ -174,30 +252,54 @@ CREATE TABLE IF NOT EXISTS `produktkategorien` (
 --
 
 INSERT INTO `produktkategorien` (`_id`, `prodkbezeichnung`, `prodkstandort`,`fk_unterkategorien`) VALUES
-(10101000, 'Holzbohrer', '2C',10100000),
-(10102000, 'Stahlbohrer', '2C',10100000),
-(10103000, 'Steinbohrer', '2C',10100000),
-(10104000, 'Forstner/Kunstbohrer', '2C',10100000),
-(10105000, 'Spezialbohrer', '2C',10100000),
-(10201000, 'Bohrmaschine', '3C',10200000),
-(10202000, 'Schlagbohrmaschine', '3D',10200000),
-(10203000, 'Industriebohrmaschine', '3E',10200000),
-(10204000, 'Akkuschrauber', '3C',10200000),
-(20101000, 'Sechskantschrauben', '4A',20100000),
-(20102000, 'Zylinderschrauben', '4A',20100000),
-(20103000, 'Gewindeschrauben', '4A',20100000),
-(20104000, 'Blechschrauben', '4A',20100000),
-(20105000, 'Holzschrauben', '4B',20100000),
-(20106000, 'Dübel', '4B',20100000),
-(20201000, 'Sicherungsmuttern', '4B',20200000),
-(20202000, 'Kronenmuttern', '4B',20200000),
-(20203000, 'Hutmuttern', '4B',20200000),
-(80101000, 'Lampen', '1E',80100000),
-(80102000, 'Stehlampen', '1D',80100000),
-(80103000, 'Baustellen-/Industrielampen', '1E',80100000),
-(80201000, 'Glühbirnen', '1 C',80200000),
-(80202000, 'Energiesparbirnen', '1C',80200000),
-(80203000, 'Halogen', '1C',80200000),
+(10101000, 'Holzbohrer', '2C',10100000);
+INSERT INTO `produktkategorien` (`_id`, `prodkbezeichnung`, `prodkstandort`,`fk_unterkategorien`) VALUES
+(10102000, 'Stahlbohrer', '2C',10100000);
+INSERT INTO `produktkategorien` (`_id`, `prodkbezeichnung`, `prodkstandort`,`fk_unterkategorien`) VALUES
+(10103000, 'Steinbohrer', '2C',10100000);
+INSERT INTO `produktkategorien` (`_id`, `prodkbezeichnung`, `prodkstandort`,`fk_unterkategorien`) VALUES
+(10104000, 'Forstner/Kunstbohrer', '2C',10100000);
+INSERT INTO `produktkategorien` (`_id`, `prodkbezeichnung`, `prodkstandort`,`fk_unterkategorien`) VALUES
+(10105000, 'Spezialbohrer', '2C',10100000);
+INSERT INTO `produktkategorien` (`_id`, `prodkbezeichnung`, `prodkstandort`,`fk_unterkategorien`) VALUES
+(10201000, 'Bohrmaschine', '3C',10200000);
+INSERT INTO `produktkategorien` (`_id`, `prodkbezeichnung`, `prodkstandort`,`fk_unterkategorien`) VALUES
+(10202000, 'Schlagbohrmaschine', '3D',10200000);
+INSERT INTO `produktkategorien` (`_id`, `prodkbezeichnung`, `prodkstandort`,`fk_unterkategorien`) VALUES
+(10203000, 'Industriebohrmaschine', '3E',10200000);
+INSERT INTO `produktkategorien` (`_id`, `prodkbezeichnung`, `prodkstandort`,`fk_unterkategorien`) VALUES
+(10204000, 'Akkuschrauber', '3C',10200000);
+INSERT INTO `produktkategorien` (`_id`, `prodkbezeichnung`, `prodkstandort`,`fk_unterkategorien`) VALUES
+(20101000, 'Sechskantschrauben', '4A',20100000);
+INSERT INTO `produktkategorien` (`_id`, `prodkbezeichnung`, `prodkstandort`,`fk_unterkategorien`) VALUES
+(20102000, 'Zylinderschrauben', '4A',20100000);
+INSERT INTO `produktkategorien` (`_id`, `prodkbezeichnung`, `prodkstandort`,`fk_unterkategorien`) VALUES
+(20103000, 'Gewindeschrauben', '4A',20100000);
+INSERT INTO `produktkategorien` (`_id`, `prodkbezeichnung`, `prodkstandort`,`fk_unterkategorien`) VALUES
+(20104000, 'Blechschrauben', '4A',20100000);
+INSERT INTO `produktkategorien` (`_id`, `prodkbezeichnung`, `prodkstandort`,`fk_unterkategorien`) VALUES
+(20105000, 'Holzschrauben', '4B',20100000);
+INSERT INTO `produktkategorien` (`_id`, `prodkbezeichnung`, `prodkstandort`,`fk_unterkategorien`) VALUES
+(20106000, 'Dübel', '4B',20100000);
+INSERT INTO `produktkategorien` (`_id`, `prodkbezeichnung`, `prodkstandort`,`fk_unterkategorien`) VALUES
+(20201000, 'Sicherungsmuttern', '4B',20200000);
+INSERT INTO `produktkategorien` (`_id`, `prodkbezeichnung`, `prodkstandort`,`fk_unterkategorien`) VALUES
+(20202000, 'Kronenmuttern', '4B',20200000);
+INSERT INTO `produktkategorien` (`_id`, `prodkbezeichnung`, `prodkstandort`,`fk_unterkategorien`) VALUES
+(20203000, 'Hutmuttern', '4B',20200000);
+INSERT INTO `produktkategorien` (`_id`, `prodkbezeichnung`, `prodkstandort`,`fk_unterkategorien`) VALUES
+(80101000, 'Lampen', '1E',80100000);
+INSERT INTO `produktkategorien` (`_id`, `prodkbezeichnung`, `prodkstandort`,`fk_unterkategorien`) VALUES
+(80102000, 'Stehlampen', '1D',80100000);
+INSERT INTO `produktkategorien` (`_id`, `prodkbezeichnung`, `prodkstandort`,`fk_unterkategorien`) VALUES
+(80103000, 'Baustellen-/Industrielampen', '1E',80100000);
+INSERT INTO `produktkategorien` (`_id`, `prodkbezeichnung`, `prodkstandort`,`fk_unterkategorien`) VALUES
+(80201000, 'Glühbirnen', '1 C',80200000);
+INSERT INTO `produktkategorien` (`_id`, `prodkbezeichnung`, `prodkstandort`,`fk_unterkategorien`) VALUES
+(80202000, 'Energiesparbirnen', '1C',80200000);
+INSERT INTO `produktkategorien` (`_id`, `prodkbezeichnung`, `prodkstandort`,`fk_unterkategorien`) VALUES
+(80203000, 'Halogen', '1C',80200000);
+INSERT INTO `produktkategorien` (`_id`, `prodkbezeichnung`, `prodkstandort`,`fk_unterkategorien`) VALUES
 (80204000, 'LED', '1C',80200000);
 
 -- --------------------------------------------------------
@@ -228,10 +330,14 @@ CREATE TABLE IF NOT EXISTS `stammkunden` (
 --
 
 INSERT INTO `stammkunden` (`_id`, `passwort`, `anrede`, `vorname`, `nachname`, `strasse`, `plz`, `ort`, `telenr`, `email`, `kartennr`, `statnr`) VALUES
-(0001, 'e80b5017098950fc58aad83c8c14978e', 'Herr', 'Max', 'Mustermann', 'Musterstrasse 15', 72458, 'Albstadt-Ebingen', '0743177777', 'max.mustermann@mustermail.com', 20000001, 1),
-(0002, '26e162d0b5706141bdb954900aebe804', 'Frau', 'Maxelina', 'Musterfrau', 'Musterweg 2', 72458, 'Albstadt-Ebingen', '0743188888', 'maxelina.musterfrau@mustermail.de', 20000002, 1),
-(0003, '879b75376498eab4e9b8968a46bfdb09', 'Herr', 'Hugo', 'Bartel', 'Dingsweg 5', 12345, 'Dingshausen', '012345678', 'dings@da.eu', 20000003, 1),
-(0004, '8376935b94232768ee9113c12efd75b6', 'Herr', 'Michael', 'Teufele', 'Ingostrasse 65', 12345, 'Ringshausen', '07056 78859', 'Michael.Teufele@gmx.de', 20000004, 1),
+(0001, 'e80b5017098950fc58aad83c8c14978e', 'Herr', 'Max', 'Mustermann', 'Musterstrasse 15', 72458, 'Albstadt-Ebingen', '0743177777', 'max.mustermann@mustermail.com', 20000001, 1);
+INSERT INTO `stammkunden` (`_id`, `passwort`, `anrede`, `vorname`, `nachname`, `strasse`, `plz`, `ort`, `telenr`, `email`, `kartennr`, `statnr`) VALUES
+(0002, '26e162d0b5706141bdb954900aebe804', 'Frau', 'Maxelina', 'Musterfrau', 'Musterweg 2', 72458, 'Albstadt-Ebingen', '0743188888', 'maxelina.musterfrau@mustermail.de', 20000002, 1);
+INSERT INTO `stammkunden` (`_id`, `passwort`, `anrede`, `vorname`, `nachname`, `strasse`, `plz`, `ort`, `telenr`, `email`, `kartennr`, `statnr`) VALUES
+(0003, '879b75376498eab4e9b8968a46bfdb09', 'Herr', 'Hugo', 'Bartel', 'Dingsweg 5', 12345, 'Dingshausen', '012345678', 'dings@da.eu', 20000003, 1);
+INSERT INTO `stammkunden` (`_id`, `passwort`, `anrede`, `vorname`, `nachname`, `strasse`, `plz`, `ort`, `telenr`, `email`, `kartennr`, `statnr`) VALUES
+(0004, '8376935b94232768ee9113c12efd75b6', 'Herr', 'Michael', 'Teufele', 'Ingostrasse 65', 12345, 'Ringshausen', '07056 78859', 'Michael.Teufele@gmx.de', 20000004, 1);
+INSERT INTO `stammkunden` (`_id`, `passwort`, `anrede`, `vorname`, `nachname`, `strasse`, `plz`, `ort`, `telenr`, `email`, `kartennr`, `statnr`) VALUES
 (9999, '912ec803b2ce49e4a541068d495ab570', 'Herr', 'Patrick', 'Leuschner', 'Forsthausstrasse 4', 72119, 'Ammerbuch', '07073910382', 'patrick_leuschner@web.de', 0, 0);
 
 -- --------------------------------------------------------
@@ -252,22 +358,38 @@ CREATE TABLE IF NOT EXISTS `stationen` (
 --
 
 INSERT INTO `stationen` (`_id`, `statname`) VALUES
-(1, 'Stationairy Device XCX II 001'),
-(2, 'Stationairy Device XCX II 002'),
-(3, 'Stationairy Device XCX II 003'),
-(4, 'Stationairy Device XCX II 004'),
-(5, 'Stationairy Device XCX II 005'),
-(6, 'Mobile Device CRY III 001'),
-(7, 'Mobile Device CRY III 002'),
-(8, 'Mobile Device CRY III 003'),
-(9, 'Mobile Device CRY III 004'),
-(10, 'Mobile Device CRY III 005'),
-(11, 'Mobile Device CRY III 006'),
-(12, 'Mobile Device CRY III 007'),
-(13, 'Mobile Device CRY III 008'),
-(14, 'Mobile Device CRY III 009'),
-(15, 'Mobile Device CRY III 010'),
-(16, 'Mobile Device CRY III 011'),
+(1, 'Stationairy Device XCX II 001');
+INSERT INTO `stationen` (`_id`, `statname`) VALUES
+(2, 'Stationairy Device XCX II 002');
+INSERT INTO `stationen` (`_id`, `statname`) VALUES
+(3, 'Stationairy Device XCX II 003');
+INSERT INTO `stationen` (`_id`, `statname`) VALUES
+(4, 'Stationairy Device XCX II 004');
+INSERT INTO `stationen` (`_id`, `statname`) VALUES
+(5, 'Stationairy Device XCX II 005');
+INSERT INTO `stationen` (`_id`, `statname`) VALUES
+(6, 'Mobile Device CRY III 001');
+INSERT INTO `stationen` (`_id`, `statname`) VALUES
+(7, 'Mobile Device CRY III 002');
+INSERT INTO `stationen` (`_id`, `statname`) VALUES
+(8, 'Mobile Device CRY III 003');
+INSERT INTO `stationen` (`_id`, `statname`) VALUES
+(9, 'Mobile Device CRY III 004');
+INSERT INTO `stationen` (`_id`, `statname`) VALUES
+(10, 'Mobile Device CRY III 005');
+INSERT INTO `stationen` (`_id`, `statname`) VALUES
+(11, 'Mobile Device CRY III 006');
+INSERT INTO `stationen` (`_id`, `statname`) VALUES
+(12, 'Mobile Device CRY III 007');
+INSERT INTO `stationen` (`_id`, `statname`) VALUES
+(13, 'Mobile Device CRY III 008');
+INSERT INTO `stationen` (`_id`, `statname`) VALUES
+(14, 'Mobile Device CRY III 009');
+INSERT INTO `stationen` (`_id`, `statname`) VALUES
+(15, 'Mobile Device CRY III 010');
+INSERT INTO `stationen` (`_id`, `statname`) VALUES
+(16, 'Mobile Device CRY III 011');
+INSERT INTO `stationen` (`_id`, `statname`) VALUES
 (17, 'Mobile Device CRY III 012');
 
 -- --------------------------------------------------------
@@ -292,40 +414,7 @@ INSERT INTO `tempkunden` (`_id`, `statnr`) VALUES
 
 -- --------------------------------------------------------
 
---
--- Tabellenstruktur für Tabelle `unterkategorien`
---
 
-DROP TABLE IF EXISTS `unterkategorien`;
-CREATE TABLE IF NOT EXISTS `unterkategorien` (
-  `_id` int(11) NOT NULL,
-  `untkbezeichnung` varchar(99) NOT NULL,
-  `untkstandort` varchar(11) NOT NULL,
-  fk_hauptkategorien int(11) NOT NULL, 
-  PRIMARY KEY (`_id`)
-);
-
---
--- Daten für Tabelle `unterkategorien`
---
-
-INSERT INTO `unterkategorien` (`_id`, `untkbezeichnung`, `untkstandort`,`fk_hauptkategorien`) VALUES
-(10100000, 'Bohrer', '2CDE',10000000),
-(10200000, 'Bohrmaschinen', '3CDE',10000000),
-(10300000, 'Zubehör', '2CDE',10000000),
-(20100000, 'Schrauben', '4AB',2000000),
-(20200000, 'Muttern', '4AB',2000000),
-(20300000, 'Unterlegscheiben', '4AB',2000000),
-(20400000, 'Sicherungen', '4AB',2000000),
-(20500000, 'Schraubenzieher', '5AB',2000000),
-(20600000, 'Schlüssel', '5AB',2000000),
-(20700000, 'Akkuschrauber', '3C',2000000),
-(20800000, 'Bits/Nüsse', '5AB',2000000),
-(20900000, 'Zubehör', '5AB',2000000),
-(80100000, 'Lampen', '1DE',8000000),
-(80200000, 'Leuchtmittel', '1C',8000000);
-
--- --------------------------------------------------------
 
 --
 -- Tabellenstruktur für Tabelle `zusatzinformationen`
@@ -343,7 +432,8 @@ CREATE TABLE IF NOT EXISTS `zusatzinformationen` (
 --
 
 INSERT INTO `zusatzinformationen` (`_id`, `artikelbeschreibung`) VALUES
-(10201001, '  Nennaufnahmeleistung: 720 W     Max. Bohrdurchmesser in Beton: 26 mm     Max. Einzelschlagenergie: 2,6 J'),
+(10201001, '  Nennaufnahmeleistung: 720 W     Max. Bohrdurchmesser in Beton: 26 mm     Max. Einzelschlagenergie: 2,6 J');
+INSERT INTO `zusatzinformationen` (`_id`, `artikelbeschreibung`) VALUES
 (10201002, 'Nennaufnahmeleistung: 750 W     Max. Bohrdurchmesser in Beton: 26 mm     Max. Einzelschlagenergie: 2,8 J');
 
 -- /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
