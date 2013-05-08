@@ -61,7 +61,7 @@ INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, 
 (20105001, '04C2', 'Holzschraube Linsensenkkopf m. I-Stern 3,5 x 25 mm, DIN 95, Vernickelt, 200 Stück', 2.15, '',20105000),
 (20106001, '04A2', 'Spreizdübel Barracuda SD 8/40+S', 2.89, '',20106000),
 (20106002, '04A1', 'Spreizdübel Barracuda SD 6/30+S', 2.99, '',20106000),
-(20106003, '04B2', 'Allzweckd&uuml;bel TRI 6/36 ', 2.99, '',20106000),
+(20106003, '04B2', 'Allzweckdübel TRI 6/36 ', 2.99, '',20106000),
 (20201001, '04B3', 'Sechskantmutter selbstsichernd DIN 985, M3 galv.verzinkt, 100 Stück', 2.99, '',20201000),
 (80102001, '01D1', 'Halogen-Stehlampe Spider Glaskugel mit Chrom', 108.95, '',80102000),
 (80102002, '01D2', 'Halogen-Stehlampe sinned chrom mit Metallkopf', 158.9, '',80102000),
@@ -145,8 +145,8 @@ INSERT INTO `hauptkategorien` (`_id`, `hptkbezeichnung`, `hptkstandort`) VALUES
 (10000000, 'Bohren', '2'),
 (80000000, 'Beleuchtung', '1'),
 (20000000, 'Schrauben', '4'),
-(30000000, 'S&auml;gen/Schneiden', '5'),
-(40000000, 'Sanit&auml;r', '6'),
+(30000000, 'Sägen/Schneiden', '5'),
+(40000000, 'Sanitär', '6'),
 (50000000, 'Garten', '9'),
 (60000000, 'Boden', '7'),
 (70000000, 'Tapezieren/Streichen', '8'),
@@ -188,14 +188,14 @@ INSERT INTO `produktkategorien` (`_id`, `prodkbezeichnung`, `prodkstandort`,`fk_
 (20103000, 'Gewindeschrauben', '4A',20100000),
 (20104000, 'Blechschrauben', '4A',20100000),
 (20105000, 'Holzschrauben', '4B',20100000),
-(20106000, 'D&uuml;bel', '4B',20100000),
+(20106000, 'Dübel', '4B',20100000),
 (20201000, 'Sicherungsmuttern', '4B',20200000),
 (20202000, 'Kronenmuttern', '4B',20200000),
 (20203000, 'Hutmuttern', '4B',20200000),
 (80101000, 'Lampen', '1E',80100000),
 (80102000, 'Stehlampen', '1D',80100000),
 (80103000, 'Baustellen-/Industrielampen', '1E',80100000),
-(80201000, 'Gl&uuml;hbirnen', '1 C',80200000),
+(80201000, 'Glühbirnen', '1 C',80200000),
 (80202000, 'Energiesparbirnen', '1C',80200000),
 (80203000, 'Halogen', '1C',80200000),
 (80204000, 'LED', '1C',80200000);
@@ -228,11 +228,11 @@ CREATE TABLE IF NOT EXISTS `stammkunden` (
 --
 
 INSERT INTO `stammkunden` (`_id`, `passwort`, `anrede`, `vorname`, `nachname`, `strasse`, `plz`, `ort`, `telenr`, `email`, `kartennr`, `statnr`) VALUES
-(0001, 'e80b5017098950fc58aad83c8c14978e', 'Herr', 'Max', 'Mustermann', 'Musterstraße 15', 72458, 'Albstadt-Ebingen', '0743177777', 'max.mustermann@mustermail.com', 20000001, 1),
+(0001, 'e80b5017098950fc58aad83c8c14978e', 'Herr', 'Max', 'Mustermann', 'Musterstrasse 15', 72458, 'Albstadt-Ebingen', '0743177777', 'max.mustermann@mustermail.com', 20000001, 1),
 (0002, '26e162d0b5706141bdb954900aebe804', 'Frau', 'Maxelina', 'Musterfrau', 'Musterweg 2', 72458, 'Albstadt-Ebingen', '0743188888', 'maxelina.musterfrau@mustermail.de', 20000002, 1),
 (0003, '879b75376498eab4e9b8968a46bfdb09', 'Herr', 'Hugo', 'Bartel', 'Dingsweg 5', 12345, 'Dingshausen', '012345678', 'dings@da.eu', 20000003, 1),
-(0004, '8376935b94232768ee9113c12efd75b6', 'Herr', 'Michael', 'Teufele', 'Ingostraße 65', 12345, 'Ringshausen', '07056 78859', 'Michael.Teufele@gmx.de', 20000004, 1),
-(9999, '912ec803b2ce49e4a541068d495ab570', 'Herr', 'Patrick', 'Leuschner', 'Forsthausstraße 4', 72119, 'Ammerbuch', '07073910382', 'patrick_leuschner@web.de', 0, 0);
+(0004, '8376935b94232768ee9113c12efd75b6', 'Herr', 'Michael', 'Teufele', 'Ingostrasse 65', 12345, 'Ringshausen', '07056 78859', 'Michael.Teufele@gmx.de', 20000004, 1),
+(9999, '912ec803b2ce49e4a541068d495ab570', 'Herr', 'Patrick', 'Leuschner', 'Forsthausstrasse 4', 72119, 'Ammerbuch', '07073910382', 'patrick_leuschner@web.de', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -312,16 +312,16 @@ CREATE TABLE IF NOT EXISTS `unterkategorien` (
 INSERT INTO `unterkategorien` (`_id`, `untkbezeichnung`, `untkstandort`,`fk_hauptkategorien`) VALUES
 (10100000, 'Bohrer', '2CDE',10000000),
 (10200000, 'Bohrmaschinen', '3CDE',10000000),
-(10300000, 'Zubeh&ouml;r', '2CDE',10000000),
+(10300000, 'Zubehör', '2CDE',10000000),
 (20100000, 'Schrauben', '4AB',2000000),
 (20200000, 'Muttern', '4AB',2000000),
 (20300000, 'Unterlegscheiben', '4AB',2000000),
 (20400000, 'Sicherungen', '4AB',2000000),
 (20500000, 'Schraubenzieher', '5AB',2000000),
-(20600000, 'Schl&uuml;ssel', '5AB',2000000),
+(20600000, 'Schlüssel', '5AB',2000000),
 (20700000, 'Akkuschrauber', '3C',2000000),
-(20800000, 'Bits/N&uuml;sse', '5AB',2000000),
-(20900000, 'Zubeh&ouml;r', '5AB',2000000),
+(20800000, 'Bits/Nüsse', '5AB',2000000),
+(20900000, 'Zubehör', '5AB',2000000),
 (80100000, 'Lampen', '1DE',8000000),
 (80200000, 'Leuchtmittel', '1C',8000000);
 

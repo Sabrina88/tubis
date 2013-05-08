@@ -32,6 +32,7 @@ public class Search extends Activity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		System.out.println("Start Search!");
 		
 		
 		search = (EditText) findViewById(R.id.searchField);

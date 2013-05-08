@@ -36,6 +36,7 @@ OnItemSelectedListener {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		System.out.println("Start Main Activity");
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		

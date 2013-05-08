@@ -16,42 +16,43 @@ public class StartPoint extends Activity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		System.out.println("Start Baumarkt App!");
 		setContentView(R.layout.choice);
 	
 		
 	
-	category = (Button) findViewById(R.id.category);
-	search = (Button) findViewById(R.id.search);
-	
-	
-				category.setOnClickListener(new View.OnClickListener() {
-					
-					@Override
-					public void onClick(View v) {
-						try{
-							Intent openStartingPoint = new Intent("com.example.test.MAINACTIVITY");
-							startActivity(openStartingPoint);
-							}catch(Exception e){
-								System.out.println("SFGSG");
-							}
-					}
-				});
-	
-
-
-	search.setOnClickListener(new View.OnClickListener() {
+		category = (Button) findViewById(R.id.category);
+		search = (Button) findViewById(R.id.search);
 		
-		@Override
-		public void onClick(View v) {
-			try{
-			Intent openStartingPoint = new Intent("com.example.test.SEARCH");
-			startActivity(openStartingPoint);
-			}catch(Exception e){
-				System.out.println("SFGSG");
-			}
+		
+					category.setOnClickListener(new View.OnClickListener() {
+						
+						@Override
+						public void onClick(View v) {
+							try{
+								Intent openStartingPoint = new Intent("com.example.test.MAINACTIVITY");
+								startActivity(openStartingPoint);
+								}catch(Exception e){
+									System.out.println("SFGSG");
+								}
+						}
+					});
+		
+	
+	
+		search.setOnClickListener(new View.OnClickListener() {
 			
-		}
-	});
+			@Override
+			public void onClick(View v) {
+				try{
+				Intent openStartingPoint = new Intent("com.example.test.SEARCH");
+				startActivity(openStartingPoint);
+				}catch(Exception e){
+					System.out.println("SFGSG");
+				}
+				
+			}
+		});
 }
 
 }
