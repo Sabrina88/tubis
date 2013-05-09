@@ -79,6 +79,7 @@ public class Search extends Activity implements
 	}	
 	
 	  private void loadSearch(String text) {
+		  System.out.println("Start search....");
 	        // database handler
 	/*        DataBaseHelper db = new DataBaseHelper(getApplicationContext());
 	 
@@ -93,25 +94,17 @@ public class Search extends Activity implements
 	        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 	 
 	        // attaching data adapter to spinner
-	        spinnerHauptkategorie.setAdapter(dataAdapter);       
-	   */ }
-	
-	
-	
-	
-	
-	
-	
+	        spinnerHauptkategorie.setAdapter(dataAdapter);      
+	   */
+		  System.out.println("Search Done!");
+		  
+	  }
 	
 	
 	@Override
 	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
 			long arg3) {
-		
-		
-		
-		
-		
+
 	}
 
 	@Override
@@ -119,18 +112,5 @@ public class Search extends Activity implements
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

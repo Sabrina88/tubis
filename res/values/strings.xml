@@ -6,4 +6,5 @@
     <string name="hello_world">Artikelauswahl</string>
   <string name="category">Kategorie</string>
     <string name="search">Suchen</string>
+    <string name="search_headline">Artikelsuche</string>
 </resources>
