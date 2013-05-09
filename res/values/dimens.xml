@@ -3,5 +3,10 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="Headline1">20dp</dimen>
+    <color name="Headline1Color">#0000FF</color>
+    <dimen name="Headline">22dp</dimen>
+    <color name="Background_LightGray">#D0D0D0</color>
+    <color name="Background_lightYellow">#FFFF33</color>
 
 </resources>

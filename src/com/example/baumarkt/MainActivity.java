@@ -12,8 +12,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.Spinner;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -27,18 +29,24 @@ import com.example.test.R;
 public class MainActivity extends Activity implements
 OnItemSelectedListener {
 
+	// Set all instance variables to private to avoid access from outer space
 	 // Spinner element
-	Spinner spinnerHauptkategorie, spinnerUnterkategorie, spinnerProduktkategorie;
+	private Spinner spinnerHauptkategorie, spinnerUnterkategorie, spinnerProduktkategorie;
+	private GridView resultGrid;
+	private GridView headlineResultGrid;
 	
 	// String      onSelect;
-	TextView tv;
-	TableRow tableRow1;
+	private TextView tv;
+	private TableRow tableRow1;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		System.out.println("Start Main Activity");
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		resultGrid = (GridView) findViewById(R.id.gridView1);
+		headlineResultGrid = (GridView) findViewById(R.id.gridView2);
+		
 		
 		 DataBaseHelper myDbHelper = new DataBaseHelper(this);
 	 
@@ -253,16 +261,51 @@ OnItemSelectedListener {
 	    db.openDataBase();
 		Set<Artikel> artikel = new HashSet<Artikel>(db.getArtikel(pk));
 		db.close();
-		
-		//TODO: ändern!
-		
+
+		// Sets the result into the arra plus the headline ( +1). But for each Artikel we'll need 4 columns! So Length of result 4 times! (*4)
+		String[] result = new String[(artikel.size()) * 4]; 
+		String[] headlineResult = new String[4];
 		StringBuilder sb = new StringBuilder();
+		
+		headlineResult[0] = "Bezeichnung";
+		headlineResult[1] = "Peis";
+		headlineResult[2] = "Standort";
+		headlineResult[3] = "Bild";
+		
+		int i = 0;
+		
+		
 		for (Artikel a : artikel) {
 			sb.append(a.toString());
 			sb.append("\n");
-		}
-		tv.setText(sb.toString());
 			
+			result[i] = a.getBezeichnung();
+			result[++i] = String.valueOf(a.getPreis() + " €");
+			result[++i] = a.getStandort();
+			result[++i] = a.getBildname();
+			i++;
+		}
+		
+		ArrayAdapter<String> resultAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, result);
+		resultGrid.setAdapter(resultAdapter);
+		
+		resultGrid.setOnItemClickListener(new OnItemClickListener() {
+			
+			public void onItemClick(AdapterView<?> parent, View v, int pos, long id) {
+				System.out.println("Click on ResultGrid! Pos: " + pos + " id: " + id);
+			}
+		});
+		
+		ArrayAdapter<String> resultHeadlineAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, headlineResult);
+		headlineResultGrid.setAdapter(resultHeadlineAdapter);
+		
+		headlineResultGrid.setOnItemClickListener(new OnItemClickListener() {
+			
+			public void onItemClick(AdapterView<?> parent, View v, int pos, long id) {
+				// do noting. Idea: add a sort
+			}
+		});
+		
+//		tv.setText(sb.toString());
 	}
-	
 }
