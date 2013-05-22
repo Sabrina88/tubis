@@ -1,28 +1,27 @@
 package com.example.baumarkt;
 
-import com.example.test.R;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
+
+import com.example.test.R;
 
 
 public class StartPoint extends Activity{
 	
-	Button category,search; 
+	ImageButton category,search; 
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		System.out.println("Start Baumarkt App!");
 		setContentView(R.layout.choice);
-	
 		
 	
-		category = (Button) findViewById(R.id.category);
-		search = (Button) findViewById(R.id.search);
+		category = (ImageButton) findViewById(R.id.imageButton1);
+		search = (ImageButton) findViewById(R.id.imageButton2);
 		
 		
 					category.setOnClickListener(new View.OnClickListener() {

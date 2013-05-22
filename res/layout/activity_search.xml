@@ -34,22 +34,30 @@
         android:layout_below="@+id/textView2"
         android:ems="10" />
 
-    <Button
-        android:id="@+id/searchButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/searchField"
-        android:text="Suchen" />
-
     <GridView
         android:id="@+id/gridView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/searchButton"
+        android:layout_below="@+id/imageButton2"
         android:numColumns="4" >
-
     </GridView>
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/textView1"
+        android:layout_below="@+id/searchField"
+        android:src="@drawable/delete" />
+
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/searchField"
+        android:layout_toRightOf="@+id/imageButton2"
+        android:src="@drawable/suchenversuchsuche" />
 
 </RelativeLayout>

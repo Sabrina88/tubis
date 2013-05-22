@@ -6,6 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#CDAA7D"
     tools:context=".MainActivity" >
 
     <TextView
@@ -14,23 +15,30 @@
         android:layout_height="wrap_content"
         android:text="@string/hello_world" />
 
-    <Button
-        android:id="@+id/search"
+    <ImageView
+        android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="14dp"
-        android:text="@string/search" />
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="56dp"
+        android:src="@drawable/willkommen" />
 
-    <Button
-        android:id="@+id/category"
+    <ImageButton
+        android:id="@+id/imageButton1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/search"
-        android:layout_alignBottom="@+id/search"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_marginLeft="17dp"
-        android:text="@string/category" />
+        android:layout_alignBottom="@+id/imageButton2"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/kategorie" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:layout_toRightOf="@+id/imageButton1"
+        android:src="@drawable/suchenversuch" />
 
 </RelativeLayout>

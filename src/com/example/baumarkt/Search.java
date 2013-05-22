@@ -1,42 +1,38 @@
 package com.example.baumarkt;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import com.example.baumarkt.model.Hauptkategorie;
-import com.example.baumarkt.model.Unterkategorie;
-import com.example.test.R;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.database.SQLException;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+
+import com.example.test.R;
 
 public class Search extends Activity implements
 	OnItemSelectedListener {
 
 	
 	EditText search;
-	Button searchButton;
+	ImageButton searchButton;
+	ImageButton deleteButton;
 	String text;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_search);
 		System.out.println("Start Search!");
 		
 		
 		search = (EditText) findViewById(R.id.searchField);
-		searchButton = (Button) findViewById(R.id.searchField);
+		searchButton = (ImageButton) findViewById(R.id.imageButton2);
+		deleteButton = (ImageButton) findViewById(R.id.imageButton1);
 		
 		 DataBaseHelper myDbHelper = new DataBaseHelper(this);
 	 

@@ -23,6 +23,12 @@ import com.example.baumarkt.model.Hauptkategorie;
 import com.example.baumarkt.model.Produktkategorie;
 import com.example.baumarkt.model.Unterkategorie;
 
+/**
+ * Klasse für den Zugriff auf die Android interne Datenbank.
+ * 
+ * @author Sabrina
+ *
+ */
 public class DataBaseHelper extends SQLiteOpenHelper {
 
 	
@@ -153,6 +159,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
  
     }
     
+    /**
+     * Verwendet das SQL File ebenen.sql um die Datenbank mit den Daten zu füllen, sollte die DB nicht vorhanden
+     * sein.
+     * Alle enthaltenen SQL Statements werden ausgelesen und einzeln ausgeführt.
+     * 
+     * @throws IOException
+     */
     private void fillDatabase() throws IOException {
     	System.out.println("fillDatabase()");
     	openDataBase(SQLiteDatabase.CREATE_IF_NECESSARY);
@@ -250,7 +263,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 //        // returning lables
 //        return labels;
 //    }
+
 	
+	/**
+	 * Ließt alle Hauptkategorien aus der internen Datenbank aus und gibt diese als Liste zurück. 
+	 * @return
+	 */
 	public Collection<Hauptkategorie> getAllHauptkategorien() {
 		
 		Collection<Hauptkategorie> result = new HashSet<Hauptkategorie>();
@@ -282,7 +300,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
       return result;
 	}
 	
-public Collection<Unterkategorie> getUnterkategorien(Hauptkategorie hk) {
+	/**
+	 * Gibt alle Unterkategorien die zu einer bestimmten Hauptkategorie zurück. 
+	 * Hauptkategorie und Unterkategorie sind über einen Foreign Key verbunden. Somit lassen sich
+	 * Unterkategorien zu Hauptkategorien zuordnen.
+	 * @param hk
+	 * @return
+	 */
+	public Collection<Unterkategorie> getUnterkategorien(Hauptkategorie hk) {
 		
 		Collection<Unterkategorie> result = new HashSet<Unterkategorie>();
 		
@@ -380,6 +405,12 @@ public Collection<Unterkategorie> getUnterkategorien(Hauptkategorie hk) {
 //    	return result;
 //    }
     
+    /**
+     * Gibt alle Artikel die zu einer Produktkategorie gehören zurück. 
+     * Artikel und Produktkategorie sind über einen Fremdschlüssel verbunden
+     * @param pk
+     * @return
+     */
     public Collection<Artikel> getArtikel(Produktkategorie pk){
     	
     	Collection<Artikel> result = new ArrayList<Artikel>();
@@ -410,6 +441,11 @@ public Collection<Unterkategorie> getUnterkategorien(Hauptkategorie hk) {
     }
 
 
+    /**
+     * Gibt die Produktkategorie zu einer Unterkategorie zurück.
+     * @param uk
+     * @return
+     */
 	public Collection<Produktkategorie> getProduktkategorie(Unterkategorie uk) {
 		Collection<Produktkategorie> result = new HashSet<Produktkategorie>();
 		String selectQuery = "SELECT  * FROM " + TABLE_PRODUKTKATEGORIEN + " u WHERE u.fk_unterkategorien = " + uk.getId();

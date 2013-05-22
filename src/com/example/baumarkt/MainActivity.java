@@ -70,6 +70,7 @@ OnItemSelectedListener {
 	 
 	 	}
 
+	 	/* Drop Down GUI Elemente für die Auswahl der Kategorien*/
         spinnerHauptkategorie = (Spinner) findViewById(R.id.spinner1);
         spinnerUnterkategorie = (Spinner) findViewById(R.id.spinner2);
         spinnerProduktkategorie = (Spinner) findViewById(R.id.spinner3);
@@ -78,8 +79,10 @@ OnItemSelectedListener {
         // Loading spinner data from database
         loadSpinnerHauptkategorien(); 
         
-        tv= (TextView) findViewById(R.id.textView1);
-  //     tableRow1 = (TableRow) findViewById(R.id.tableRow1);
+//        tv= (TextView) findViewById(R.id.texts);
+  
+        
+        //     tableRow1 = (TableRow) findViewById(R.id.tableRow1);
         
         
 //        TableLayout tl = (TableLayout)findViewById(R.id.myLayout);
@@ -105,6 +108,7 @@ OnItemSelectedListener {
   //      spinner.setOnItemSelectedListener((OnItemSelectedListener) this);
         
         
+        /* Listener um auf einen Klick auf den DropDown zu reagieren*/
         spinnerHauptkategorie.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 Object item = parent.getItemAtPosition(pos);
@@ -118,6 +122,7 @@ OnItemSelectedListener {
         });
         
         
+        /* Listener um auf einen Klick auf den DropDown zu reagieren*/
         spinnerUnterkategorie.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 Object item = parent.getItemAtPosition(pos);
@@ -132,6 +137,7 @@ OnItemSelectedListener {
         });
         
         
+        /* Listener um auf einen Klick auf den DropDown zu reagieren*/
         spinnerProduktkategorie.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 Object item = parent.getItemAtPosition(pos);
@@ -256,6 +262,10 @@ OnItemSelectedListener {
 //		tv.setText(data);
 //	}
 	
+	/**
+	 * Zeigt die Artikeldaten in der Tabelle an. 
+	 * @param pk
+	 */
 	public void showData(Produktkategorie pk){
 		DataBaseHelper db = new DataBaseHelper(getApplicationContext()); 
 	    db.openDataBase();
