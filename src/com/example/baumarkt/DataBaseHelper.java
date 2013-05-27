@@ -473,4 +473,33 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 		  // returning lables
 		  return result;
 	}
+	
+	public Collection<Hauptkategorie> searchHauptkategorie(String searchString) {
+		Collection<Hauptkategorie> result = new HashSet<Hauptkategorie>();
+		SQLiteDatabase db = this.getReadableDatabase();
+		
+		//Die Query sucht nach einer Hauptkategorie die den Suchstring enthält. Zuvor dürfen auch anderen Zeichen stehen. Das wird über % im SQL Query realisiert
+		String selectQuery =  "SELECT  * FROM " + TABLE_HAUPTKATEGORIEN + " WHERE hptkbezeichnung like '%"+ searchString +"%'" ;
+		Cursor cursor = db.rawQuery(selectQuery, null);
+		
+	      // looping through all rows and adding to list
+	      if (cursor.moveToFirst()) {
+	          do {
+	              int id = cursor.getInt(0);
+	              String bezeichnung = cursor.getString(1);
+	              String standort = cursor.getString(2);
+	              
+	              Hauptkategorie h = new Hauptkategorie(id, bezeichnung, standort);
+	              result.add(h);
+	              System.out.println("Found in DB: " + h);
+	              
+	          } while (cursor.moveToNext());
+	      }
+
+	      // closing connection
+	      cursor.close();
+	      db.close();
+		
+		return result;
+	}
 }

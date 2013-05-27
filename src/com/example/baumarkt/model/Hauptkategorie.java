@@ -55,4 +55,35 @@ public class Hauptkategorie {
 	{
 		return bezeichnung;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		
+		if (obj == null) {
+			return false;
+		}
+		
+		if (!(obj instanceof Hauptkategorie)) {
+			return false;
+		}
+		
+		Hauptkategorie other = (Hauptkategorie) obj;
+		return id == other.id && bezeichnung.equals(other.bezeichnung) && standort.equals(standort);
+		
+	}
+	
+	@Override
+	public int hashCode() {
+		int result = 37;
+		int r = 17;
+		
+		result = result * r + id;
+		result = result * r + bezeichnung.hashCode();
+		result = result * r + standort.hashCode();
+		
+		return result;
+	}
 }
