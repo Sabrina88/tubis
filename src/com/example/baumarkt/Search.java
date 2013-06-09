@@ -13,26 +13,34 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.example.baumarkt.model.Artikel;
 import com.example.baumarkt.model.Hauptkategorie;
+import com.example.baumarkt.model.Produktkategorie;
+import com.example.baumarkt.model.Unterkategorie;
 import com.example.test.R;
 
 public class Search extends Activity implements
 	OnItemSelectedListener {
 
+	public static String KEY_HAUPTKATEGORIE = "hauptkategorie";
+	public static String KEY_UNTERKATEGORIE = "unterkategorie";
+	public static String KEY_PRODUKTKATEORIE = "produktkategorie";
 	
-	EditText search;
-	ImageButton searchButton;
-	ImageButton deleteButton;
-	String text;
-	DataBaseHelper myDbHelper;
+	
+	private EditText search;
+	private ImageButton searchButton;
+	private ImageButton deleteButton;
+	private String text;
+	private DataBaseHelper myDbHelper;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
 		System.out.println("Start Search!");
+		Toast.makeText(getApplicationContext(), "Bitte Suchtext eingeben und >>Suche<< Klicken", Toast.LENGTH_LONG).show();
 		
 		
 		search = (EditText) findViewById(R.id.searchField);
@@ -75,34 +83,46 @@ public class Search extends Activity implements
 			@Override
 			public void onClick(View v) {
 				try{
-				 text = search.getText().toString();
-//				loadSearch(text);
+					text = search.getText().toString();
 				 
-					Intent openStartingPoint = new Intent("com.example.test.MAINACTIVITY");
-					startActivity(openStartingPoint);
-				DataBaseHelper db = new DataBaseHelper(getApplicationContext());
-				
+					DataBaseHelper db = new DataBaseHelper(getApplicationContext());
+					List<Hauptkategorie> hauptkategorien =  new ArrayList<Hauptkategorie>(db.searchHauptkategorie(text));
+				 
+					if (hauptkategorien.size() > 0) {
+						Intent openStartingPoint = new Intent("com.example.test.MAINACTIVITY");
+						Bundle b = new Bundle();
+						b.putInt(KEY_HAUPTKATEGORIE, hauptkategorien.get(0).getId());
+						openStartingPoint.putExtras(b);
+						startActivity(openStartingPoint);
+					}
+					else {
+						
+						
+						List<Unterkategorie> unterkategorien =  new ArrayList<Unterkategorie>(db.searchUnterkategorie(text));
+						if (unterkategorien.size() > 0) {
+							
+						}
+						else
+						{
+							List<Produktkategorie> produktkategorien =  new ArrayList<Produktkategorie>(db.searchProduktkategorie(text));
+							if (produktkategorien.size() > 0) {
+								
+							}
+							else
+							{
+								List<Artikel> artikel =  new ArrayList<Artikel>(db.searchArtikel(text));
+								if (artikel.size() > 0) {
+									
+								}
+								else
+								{
+									Toast.makeText(getApplicationContext(), "Es wurden keine Kategorien für das Suchkriterium gefunden",Toast.LENGTH_LONG).show();
 
-		        Spinner spinnerHauptkategorie = (Spinner) findViewById(R.id.spinner1);
-		        
-		        List<Hauptkategorie> hauptkategorien =  new ArrayList<Hauptkategorie>(db.searchHauptkategorie(text));
-		         
-		        if (hauptkategorien.size() >= 1) {
-		        	Hauptkategorie searchResult = hauptkategorien.get(0);
-			        for (int i = 0 ; i < spinnerHauptkategorie.getAdapter().getCount(); i++) {
-			        	Hauptkategorie h  = (Hauptkategorie) spinnerHauptkategorie.getItemAtPosition(i);
-			        	System.out.println("Check: " + h);
-			        	if (h.equals(searchResult)) {
-			        		System.out.println("Found on Index: "  + i);
-			        		spinnerHauptkategorie.setSelection(i);
-			        	}
-			        }
-			        
-			        Spinner spinnerUnterkategorie = (Spinner) findViewById(R.id.spinner2);
-			        Spinner spinnerProduktkategorie = (Spinner) findViewById(R.id.spinner3);
-		        }
-		        
-		        
+								}
+							}
+						}
+						
+					}
 				
 				}catch(Exception e){
 					e.printStackTrace();
@@ -111,26 +131,6 @@ public class Search extends Activity implements
 			}
 		});
 	}	
-	
-	  private void loadSearch(String text) {
-		  System.out.println("Start search....");
-	        // database handler
-		  DataBaseHelper db = new DataBaseHelper(getApplicationContext());
-	 
-	        // Spinner Drop down elements
-//	        List<Hauptkategorie> hauptkategorien = new ArrayList<Hauptkategorie>(db.getAllHauptkategorien());
-	 
-	        // Creating adapter for spinner
-//	        ArrayAdapter<Hauptkategorie> dataAdapter = new ArrayAdapter<Hauptkategorie>(this,
-//	                android.R.layout.simple_spinner_item, hauptkategorien);
-	 
-	        // Drop down layout style - list view with radio button
-//	        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-	 
-	        // attaching data adapter to spinner
-		  System.out.println("Search Done!");
-		  
-	  }
 	
 	
 	@Override

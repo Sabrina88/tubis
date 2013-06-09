@@ -503,4 +503,23 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 		
 		return result;
 	}
+	
+	public List<Produktkategorie> searchProduktkategorie(String searchText) {
+		List<Produktkategorie> produktkategorien = new ArrayList<Produktkategorie>();
+		
+		return produktkategorien;
+	}
+	
+	public List<Unterkategorie> searchUnterkategorie(String searchText) {
+		List<Unterkategorie> unterkategorien = new ArrayList<Unterkategorie>();
+		
+		
+		return unterkategorien;
+	}
+	
+	public List<Artikel> searchArtikel(String searchText) {
+		List<Artikel> artikel = new ArrayList<Artikel>();
+		
+		return artikel;
+	}
 }
