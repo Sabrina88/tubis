@@ -81,27 +81,27 @@ INSERT INTO `unterkategorien` (`_id`, `untkbezeichnung`, `untkstandort`,`fk_haup
 INSERT INTO `unterkategorien` (`_id`, `untkbezeichnung`, `untkstandort`,`fk_hauptkategorien`) VALUES
 (10300000, 'Zubehör', '2CDE',10000000);
 INSERT INTO `unterkategorien` (`_id`, `untkbezeichnung`, `untkstandort`,`fk_hauptkategorien`) VALUES
-(20100000, 'Schrauben', '4AB',2000000);
+(20100000, 'Schrauben', '4AB',20000000);
 INSERT INTO `unterkategorien` (`_id`, `untkbezeichnung`, `untkstandort`,`fk_hauptkategorien`) VALUES
-(20200000, 'Muttern', '4AB',2000000);
+(20200000, 'Muttern', '4AB',20000000);
 INSERT INTO `unterkategorien` (`_id`, `untkbezeichnung`, `untkstandort`,`fk_hauptkategorien`) VALUES
-(20300000, 'Unterlegscheiben', '4AB',2000000);
+(20300000, 'Unterlegscheiben', '4AB',20000000);
 INSERT INTO `unterkategorien` (`_id`, `untkbezeichnung`, `untkstandort`,`fk_hauptkategorien`) VALUES
-(20400000, 'Sicherungen', '4AB',2000000);
+(20400000, 'Sicherungen', '4AB',20000000);
 INSERT INTO `unterkategorien` (`_id`, `untkbezeichnung`, `untkstandort`,`fk_hauptkategorien`) VALUES
-(20500000, 'Schraubenzieher', '5AB',2000000);
+(20500000, 'Schraubenzieher', '5AB',20000000);
 INSERT INTO `unterkategorien` (`_id`, `untkbezeichnung`, `untkstandort`,`fk_hauptkategorien`) VALUES
-(20600000, 'Schlüssel', '5AB',2000000);
+(20600000, 'Schlüssel', '5AB',20000000);
 INSERT INTO `unterkategorien` (`_id`, `untkbezeichnung`, `untkstandort`,`fk_hauptkategorien`) VALUES
-(20700000, 'Akkuschrauber', '3C',2000000);
+(20700000, 'Akkuschrauber', '3C',20000000);
 INSERT INTO `unterkategorien` (`_id`, `untkbezeichnung`, `untkstandort`,`fk_hauptkategorien`) VALUES
-(20800000, 'Bits/Nüsse', '5AB',2000000);
+(20800000, 'Bits/Nüsse', '5AB',20000000);
 INSERT INTO `unterkategorien` (`_id`, `untkbezeichnung`, `untkstandort`,`fk_hauptkategorien`) VALUES
-(20900000, 'Zubehör', '5AB',2000000);
+(20900000, 'Zubehör', '5AB',20000000);
 INSERT INTO `unterkategorien` (`_id`, `untkbezeichnung`, `untkstandort`,`fk_hauptkategorien`) VALUES
-(80100000, 'Lampen', '1DE',8000000);
+(80100000, 'Lampen', '1DE',80000000);
 INSERT INTO `unterkategorien` (`_id`, `untkbezeichnung`, `untkstandort`,`fk_hauptkategorien`) VALUES
-(80200000, 'Leuchtmittel', '1C',8000000);
+(80200000, 'Leuchtmittel', '1C',80000000);
 
 -- --------------------------------------------------------
 --

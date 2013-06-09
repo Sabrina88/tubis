@@ -87,32 +87,45 @@ public class Search extends Activity implements
 				 
 					DataBaseHelper db = new DataBaseHelper(getApplicationContext());
 					List<Hauptkategorie> hauptkategorien =  new ArrayList<Hauptkategorie>(db.searchHauptkategorie(text));
+					Intent openStartingPoint = new Intent("com.example.test.MAINACTIVITY");
+					Bundle b = new Bundle();
 				 
+					
+					// Suchen in den Kategrien nach dem Suchwort. Es geht von "oben" nach "unten". Zuerst werden die Hauptkategorien durchsucht
+					// dann die Unterkatagorien, dann die Produktkategorien und dan die Artikel.
 					if (hauptkategorien.size() > 0) {
-						Intent openStartingPoint = new Intent("com.example.test.MAINACTIVITY");
-						Bundle b = new Bundle();
 						b.putInt(KEY_HAUPTKATEGORIE, hauptkategorien.get(0).getId());
 						openStartingPoint.putExtras(b);
 						startActivity(openStartingPoint);
 					}
 					else {
-						
-						
 						List<Unterkategorie> unterkategorien =  new ArrayList<Unterkategorie>(db.searchUnterkategorie(text));
+						
 						if (unterkategorien.size() > 0) {
-							
+							b.putInt(KEY_UNTERKATEGORIE, unterkategorien.get(0).getId());
+							b.putInt(KEY_HAUPTKATEGORIE, unterkategorien.get(0).getHauptkategorie().getId());
+							openStartingPoint.putExtras(b);
+							startActivity(openStartingPoint);
 						}
 						else
 						{
 							List<Produktkategorie> produktkategorien =  new ArrayList<Produktkategorie>(db.searchProduktkategorie(text));
 							if (produktkategorien.size() > 0) {
-								
+								b.putInt(KEY_PRODUKTKATEORIE, produktkategorien.get(0).getId());
+								b.putInt(KEY_HAUPTKATEGORIE, produktkategorien.get(0).getUnterkategorien().getHauptkategorie().getId());
+								b.putInt(KEY_UNTERKATEGORIE, produktkategorien.get(0).getUnterkategorien().getId());
+								openStartingPoint.putExtras(b);
+								startActivity(openStartingPoint);	
 							}
 							else
 							{
 								List<Artikel> artikel =  new ArrayList<Artikel>(db.searchArtikel(text));
 								if (artikel.size() > 0) {
-									
+									b.putInt(KEY_PRODUKTKATEORIE, artikel.get(0).getProduktkategorie().getId());
+									b.putInt(KEY_HAUPTKATEGORIE, artikel.get(0).getProduktkategorie().getUnterkategorien().getHauptkategorie().getId());
+									b.putInt(KEY_UNTERKATEGORIE, artikel.get(0).getProduktkategorie().getUnterkategorien().getId());
+									openStartingPoint.putExtras(b);
+									startActivity(openStartingPoint);	
 								}
 								else
 								{
@@ -121,9 +134,7 @@ public class Search extends Activity implements
 								}
 							}
 						}
-						
 					}
-				
 				}catch(Exception e){
 					e.printStackTrace();
 					System.out.println("SFGSG");

@@ -35,6 +35,10 @@ OnItemSelectedListener {
 	private GridView resultGrid;
 	private GridView headlineResultGrid;
 	
+	private List<Hauptkategorie> hauptkategorien;
+	private List<Produktkategorie> produktkategorien;
+	private List<Unterkategorie> unterkategorien;
+	
 	// String      onSelect;
 	private TextView tv;
 	private TableRow tableRow1;
@@ -177,22 +181,12 @@ OnItemSelectedListener {
      * */
     private void loadSpinnerHauptkategorien() {
         // database handler
-    	Hauptkategorie hkSearch = null;
         DataBaseHelper db = new DataBaseHelper(getApplicationContext());
  
         // Spinner Drop down elements
-        List<Hauptkategorie> hauptkategorien = new ArrayList<Hauptkategorie>(db.getAllHauptkategorien());
+        hauptkategorien = new ArrayList<Hauptkategorie>(db.getAllHauptkategorien());
         
-        // Wenn die Actitität aus der Suche heraus aufgerufen wurde, wurde die ID der zur Suche passenden Hauptkategorie übergeben.
-        // Nun soll die zur ID passende Hauptkategorie gefunden werden.
-        for (Hauptkategorie suchergebnisHauptkategorie : hauptkategorien) {
-        	if (suchergebnisHauptkategorie.getId() == searchResultHauptkategorie) {
-        		System.out.println("HK with ID " + searchResultHauptkategorie + "found and set as search result");
-        		hkSearch = suchergebnisHauptkategorie;
-        		break;
-        	}
-        }
- 
+
         // Creating adapter for spinner
         ArrayAdapter<Hauptkategorie> dataAdapter = new ArrayAdapter<Hauptkategorie>(this,
                 android.R.layout.simple_spinner_item, hauptkategorien);
@@ -204,11 +198,7 @@ OnItemSelectedListener {
         spinnerHauptkategorie.setAdapter(dataAdapter);  
         
         // Wenn es eine Hauptkategorie gab, die Durch die Suche gefunden wurde, dann wird diese jetzt als vorgewähtl in der Liste gesetzt:
-        if (hkSearch != null) {
-        	int hkPos = ((ArrayAdapter<Hauptkategorie>) spinnerHauptkategorie.getAdapter()).getPosition(hkSearch);
-        	System.out.println("Set position " + hkPos + " as preselected");
-        	spinnerHauptkategorie.setSelection(hkPos);
-        }
+        setSpinnerHauptkategorie(searchResultHauptkategorie);
     }
     
     
@@ -220,10 +210,8 @@ OnItemSelectedListener {
         DataBaseHelper db = new DataBaseHelper(getApplicationContext());
         
         // Spinner Drop down elements
-       
-       
         System.out.println("Select Unterkategorien mit: " + hk.getId());
-        List<Unterkategorie> unterkategorien = new ArrayList<Unterkategorie>(db.getUnterkategorien(hk));
+        unterkategorien = new ArrayList<Unterkategorie>(db.getUnterkategorien(hk));
  
         // Creating adapter for spinner
         ArrayAdapter<Unterkategorie> dataAdapter = new ArrayAdapter<Unterkategorie>(this,
@@ -234,6 +222,12 @@ OnItemSelectedListener {
  
         // attaching data adapter to spinner
         spinnerUnterkategorie.setAdapter(dataAdapter);
+        
+        
+        // Wenn die Maske aus der Suche heraus aufgerufen wurde, und eine Unterkategorie gesetzt wurde, muss diese nun als
+        // selected Item markiert werden.
+        setSpinnerUnterkategorie(searchResultUnterkategorie);
+        setSpinnerHauptkategorie(searchResultHauptkategorie);
     }
 
     private void loadSpinnerProduktkategorien(Unterkategorie uk) {
@@ -244,7 +238,7 @@ OnItemSelectedListener {
        
        
         System.out.println("Select Produktkategorie mit: " + uk.getId());
-        List<Produktkategorie> produktkategorien = new ArrayList<Produktkategorie>(db.getProduktkategorie(uk));
+        produktkategorien = new ArrayList<Produktkategorie>(db.getProduktkategorie(uk));
  
         // Creating adapter for spinner
         ArrayAdapter<Produktkategorie> dataAdapter = new ArrayAdapter<Produktkategorie>(this,
@@ -255,6 +249,10 @@ OnItemSelectedListener {
  
         // attaching data adapter to spinner
         spinnerProduktkategorie.setAdapter(dataAdapter);
+        
+        setSpinnerProduktkategorie(searchResultProduktkategorie);
+        setSpinnerUnterkategorie(searchResultProduktkategorie);
+        setSpinnerHauptkategorie(searchResultHauptkategorie);
 		
 	}
 
@@ -340,5 +338,51 @@ OnItemSelectedListener {
 		});
 		
 //		tv.setText(sb.toString());
+	}
+	
+	private void setSpinnerUnterkategorie(int id) {
+		Unterkategorie ukSearch = null;
+		for (Unterkategorie uk : unterkategorien) {
+        	if (uk.getId() == id) {
+        		ukSearch = uk;
+        		break;
+        	}
+        }
+        
+		if (ukSearch != null) {
+	        int ukPos = ((ArrayAdapter<Unterkategorie>) spinnerUnterkategorie.getAdapter()).getPosition(ukSearch);
+	        spinnerUnterkategorie.setSelection(ukPos);
+	        System.out.println("Set Spinner Unterkategorie to position: "  + ukPos);
+		}
+	}
+	
+	private void setSpinnerHauptkategorie(int id) {
+		Hauptkategorie hkSearch = null;
+        for (Hauptkategorie suchergebnisHauptkategorie : hauptkategorien) {
+        	if (suchergebnisHauptkategorie.getId() == id) {
+        		hkSearch = suchergebnisHauptkategorie;
+        	}
+        }
+        
+        if (hkSearch != null) {
+	        int hkPos = ((ArrayAdapter<Hauptkategorie>) spinnerHauptkategorie.getAdapter()).getPosition(hkSearch);
+	        spinnerHauptkategorie.setSelection(hkPos);
+	        System.out.println("Set Spinner Hauptkategorie to position: " + hkPos);
+        }
+	}
+	
+	private void setSpinnerProduktkategorie(int id) {
+		Produktkategorie pkSearch = null;
+		for (Produktkategorie pk : produktkategorien) {
+			if (pk.getId() == id) {
+				pkSearch = pk;
+			}
+		}
+		
+		if (pkSearch != null) {
+			int pkPos = ((ArrayAdapter<Produktkategorie>) spinnerProduktkategorie.getAdapter()).getPosition(pkSearch);
+	        spinnerProduktkategorie.setSelection(pkPos);
+	        System.out.println("Set Spinner Produktkategorie to positioin: " + pkPos);
+		}
 	}
 }

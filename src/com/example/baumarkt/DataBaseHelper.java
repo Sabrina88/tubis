@@ -1,11 +1,9 @@
 package com.example.baumarkt;
 
 import java.io.BufferedReader;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -30,9 +28,6 @@ import com.example.baumarkt.model.Unterkategorie;
  *
  */
 public class DataBaseHelper extends SQLiteOpenHelper {
-
-	
-	 
     //The Android's default system path of your application database.
     private static String DB_PATH = "/data/data/com.example.test/databases/";
 
@@ -55,9 +50,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     
 
     // Labels Table Columns names
-    private static final String KEY_ARTIKELBEZEICHNUNG = "artikelbezeichnung";
-    private static final String KEY_ARTIKELPREIS = "preis";
-    private static final String KEY_ARTIKELSTANDORT = "artikelstandort";
+//    private static final String KEY_ARTIKELBEZEICHNUNG = "artikelbezeichnung";
+//    private static final String KEY_ARTIKELPREIS = "preis";
+//    private static final String KEY_ARTIKELSTANDORT = "artikelstandort";
  
     /**
      * Constructor
@@ -134,30 +129,30 @@ public class DataBaseHelper extends SQLiteOpenHelper {
      * system folder, from where it can be accessed and handled.
      * This is done by transfering bytestream.
      * */
-    private void copyDataBase() throws IOException{
- 
-    	//Open your local db as the input stream
-    	InputStream myInput = myContext.getAssets().open(DB_NAME);
- 
-    	// Path to the just created empty db
-    	String outFileName = DB_PATH + DB_NAME;
- 
-    	//Open the empty db as the output stream
-    	OutputStream myOutput = new FileOutputStream(outFileName);
- 
-    	//transfer bytes from the inputfile to the outputfile
-    	byte[] buffer = new byte[1024];
-    	int length;
-    	while ((length = myInput.read(buffer))>0){
-    		myOutput.write(buffer, 0, length);
-    	}
- 
-    	//Close the streams
-    	myOutput.flush();
-    	myOutput.close();
-    	myInput.close();
- 
-    }
+//    private void copyDataBase() throws IOException{
+// 
+//    	//Open your local db as the input stream
+//    	InputStream myInput = myContext.getAssets().open(DB_NAME);
+// 
+//    	// Path to the just created empty db
+//    	String outFileName = DB_PATH + DB_NAME;
+// 
+//    	//Open the empty db as the output stream
+//    	OutputStream myOutput = new FileOutputStream(outFileName);
+// 
+//    	//transfer bytes from the inputfile to the outputfile
+//    	byte[] buffer = new byte[1024];
+//    	int length;
+//    	while ((length = myInput.read(buffer))>0){
+//    		myOutput.write(buffer, 0, length);
+//    	}
+// 
+//    	//Close the streams
+//    	myOutput.flush();
+//    	myOutput.close();
+//    	myInput.close();
+// 
+//    }
     
     /**
      * Verwendet das SQL File ebenen.sql um die Datenbank mit den Daten zu füllen, sollte die DB nicht vorhanden
@@ -506,20 +501,169 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 	
 	public List<Produktkategorie> searchProduktkategorie(String searchText) {
 		List<Produktkategorie> produktkategorien = new ArrayList<Produktkategorie>();
+		SQLiteDatabase db = this.getReadableDatabase();
 		
+		String sql = "SELECT * FROM produktkategorien WHERE prodkbezeichnung LIKE '%"+ searchText + "%'";
+		System.out.println("[SQL] search produktkategorien: " + sql);
+		Cursor cursor = db.rawQuery(sql, null);
+		
+		if (cursor.moveToFirst()) {
+			do {
+				int id = cursor.getInt(0);
+	              String bezeichnung = cursor.getString(1);
+	              String standort = cursor.getString(2);
+				  int idUnterkategorie = cursor.getInt(3);
+				  
+				  Produktkategorie p = new Produktkategorie(id, bezeichnung, standort);
+				  Unterkategorie relatedUnterkategorie = getUnterkategorieById(idUnterkategorie);
+				  p.setUnterkategorien(relatedUnterkategorie);
+				  
+				  produktkategorien.add(p);
+				
+			} while (cursor.moveToNext());
+		}
+		
+		cursor.close();
+	    db.close();
 		return produktkategorien;
 	}
 	
+
+
 	public List<Unterkategorie> searchUnterkategorie(String searchText) {
 		List<Unterkategorie> unterkategorien = new ArrayList<Unterkategorie>();
+		SQLiteDatabase db = this.getReadableDatabase();
 		
+		String sql = "SELECT * FROM unterkategorien WHERE untkbezeichnung LIKE '%"+ searchText + "%'";
+		System.out.println("[SQL] search unterkategorien: " + sql);
+		Cursor cursor = db.rawQuery(sql, null);
 		
+		if (cursor.moveToFirst()) {
+			do {
+				int id = cursor.getInt(0);
+	              String bezeichnung = cursor.getString(1);
+	              String standort = cursor.getString(2);
+				  int idHauptkategorie = cursor.getInt(3);
+				  
+				  Unterkategorie u = new Unterkategorie(id, bezeichnung, standort);
+				  Hauptkategorie relatedHauptkategorie = getHauptkategorieById(idHauptkategorie);
+				  u.setHauptkategorie(relatedHauptkategorie);
+				  
+				  unterkategorien.add(u);
+				
+			} while (cursor.moveToNext());
+		}
+		
+		cursor.close();
+	    db.close();
 		return unterkategorien;
+		
 	}
 	
 	public List<Artikel> searchArtikel(String searchText) {
 		List<Artikel> artikel = new ArrayList<Artikel>();
 		
+		SQLiteDatabase db = this.getReadableDatabase();
+		
+		String sql = "SELECT * FROM artikel WHERE artikelbezeichnung LIKE '%"+ searchText + "%'";
+		System.out.println("[SQL] search artikel: " + sql);
+		Cursor cursor = db.rawQuery(sql, null);
+		
+		if (cursor.moveToFirst()) {
+			do {
+				  int id = cursor.getInt(0);
+	              String bezeichnung = cursor.getString(2);
+	              String standort = cursor.getString(1);
+	              float preis = cursor.getFloat(3);
+	              String bildname = cursor.getString(4);
+				  int idPrduktkategorie = cursor.getInt(5);
+				  
+				  Artikel a = new Artikel(id, bezeichnung, standort, preis, bildname);
+				  Produktkategorie relatedProduktkategorie= getProduktkategorieById(idPrduktkategorie);
+				  a.setProduktkategorie(relatedProduktkategorie);
+				  
+				  artikel.add(a);
+				
+			} while (cursor.moveToNext());
+		}
+		
+		cursor.close();
+	    db.close();
+		
 		return artikel;
+	}
+	
+	public Produktkategorie getProduktkategorieById(int idProduktkategorie) {
+		Produktkategorie result = null;
+		SQLiteDatabase db = this.getReadableDatabase();
+		String sql = "SELECT * FROM produktkategorien WHERE _id = " + idProduktkategorie;
+		System.out.println("[SQL] select Produktkategorie by ID: " + sql);
+		Cursor cursor = db.rawQuery(sql, null);
+		
+		if (cursor.moveToFirst()) {
+			int id = cursor.getInt(0);
+			String bezeichnung = cursor.getString(1);
+			String standort = cursor.getString(2);
+			int idUnterkategorie = cursor.getInt(3);
+			
+			Unterkategorie u = getUnterkategorieById(idUnterkategorie);
+			
+			result= new Produktkategorie(id, bezeichnung, standort);
+			result.setUnterkategorien(u); 
+			
+			System.out.println("Found for ID: " + idProduktkategorie + " Produktkategorie " + result);
+		}
+		
+		cursor.close();
+	    db.close();
+		return result;
+	}
+	
+	public Unterkategorie getUnterkategorieById(int idUnterkategorie) {
+		Unterkategorie result = null;
+		SQLiteDatabase db = this.getReadableDatabase();
+		String sql = "SELECT * FROM unterkategorien WHERE _id = " + idUnterkategorie;
+		System.out.println("[SQL] select Unterkategorien by ID: " + sql);
+		Cursor cursor = db.rawQuery(sql, null);
+		
+		if (cursor.moveToFirst()) {
+			int id = cursor.getInt(0);
+			String bezeichnung = cursor.getString(1);
+			String standort = cursor.getString(2);
+			int idHauptkategorie = cursor.getInt(3);
+			
+			Hauptkategorie h  = getHauptkategorieById(idHauptkategorie);
+			
+			result= new Unterkategorie(id, bezeichnung, standort);
+			result.setHauptkategorie(h); 
+			
+			System.out.println("Found for ID: " + idUnterkategorie + " Unerkategorie: " + result);
+		}
+		
+		cursor.close();
+	    db.close();
+		return result;
+	}
+
+	public Hauptkategorie getHauptkategorieById(int idHauptkategorie) {
+		Hauptkategorie result = null;
+		SQLiteDatabase db = this.getReadableDatabase();
+		String sql = "SELECT * FROM hauptkategorien WHERE _id=" + idHauptkategorie;
+		System.out.println("[SQL] select Hauptkategorie by ID: " + sql);
+		Cursor cursor = db.rawQuery(sql, null);
+		
+		if (cursor.moveToFirst()) {
+			int id = cursor.getInt(0);
+			String bezeichnung = cursor.getString(1);
+			String standort = cursor.getString(2);
+			
+			
+			result= new Hauptkategorie(id, bezeichnung, standort);
+			System.out.println("Found for id: " + idHauptkategorie + " Hauptkategorie: " + result);
+		}
+		
+		cursor.close();
+	    db.close();
+		return result;
 	}
 }
