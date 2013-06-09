@@ -480,6 +480,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 		
 		//Die Query sucht nach einer Hauptkategorie die den Suchstring enthält. Zuvor dürfen auch anderen Zeichen stehen. Das wird über % im SQL Query realisiert
 		String selectQuery =  "SELECT  * FROM " + TABLE_HAUPTKATEGORIEN + " WHERE hptkbezeichnung like '%"+ searchString +"%'" ;
+		System.out.println("[SQL] search Query: " + selectQuery);
 		Cursor cursor = db.rawQuery(selectQuery, null);
 		
 	      // looping through all rows and adding to list

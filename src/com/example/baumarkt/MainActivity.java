@@ -38,6 +38,9 @@ OnItemSelectedListener {
 	// String      onSelect;
 	private TextView tv;
 	private TableRow tableRow1;
+	private int searchResultHauptkategorie;
+	private int searchResultProduktkategorie;
+	private int searchResultUnterkategorie;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,17 @@ OnItemSelectedListener {
 		setContentView(R.layout.activity_main);
 		resultGrid = (GridView) findViewById(R.id.gridView1);
 		headlineResultGrid = (GridView) findViewById(R.id.gridView2);
+		
+		Bundle input = getIntent().getExtras();
+		if (input != null) {
+			searchResultHauptkategorie = input.getInt(Search.KEY_HAUPTKATEGORIE);
+			System.out.println("Found " + Search.KEY_HAUPTKATEGORIE + " with ID: " + searchResultHauptkategorie);
+			searchResultProduktkategorie = input.getInt(Search.KEY_PRODUKTKATEORIE);
+			System.out.println("Found " + Search.KEY_PRODUKTKATEORIE + " with ID: " + searchResultProduktkategorie);
+			searchResultUnterkategorie = input.getInt(Search.KEY_UNTERKATEGORIE);
+			System.out.println("Found " + Search.KEY_UNTERKATEGORIE + " with ID: " + searchResultUnterkategorie);
+		}
+		
 		
 		
 		 DataBaseHelper myDbHelper = new DataBaseHelper(this);
@@ -163,10 +177,21 @@ OnItemSelectedListener {
      * */
     private void loadSpinnerHauptkategorien() {
         // database handler
+    	Hauptkategorie hkSearch = null;
         DataBaseHelper db = new DataBaseHelper(getApplicationContext());
  
         // Spinner Drop down elements
         List<Hauptkategorie> hauptkategorien = new ArrayList<Hauptkategorie>(db.getAllHauptkategorien());
+        
+        // Wenn die Actitität aus der Suche heraus aufgerufen wurde, wurde die ID der zur Suche passenden Hauptkategorie übergeben.
+        // Nun soll die zur ID passende Hauptkategorie gefunden werden.
+        for (Hauptkategorie suchergebnisHauptkategorie : hauptkategorien) {
+        	if (suchergebnisHauptkategorie.getId() == searchResultHauptkategorie) {
+        		System.out.println("HK with ID " + searchResultHauptkategorie + "found and set as search result");
+        		hkSearch = suchergebnisHauptkategorie;
+        		break;
+        	}
+        }
  
         // Creating adapter for spinner
         ArrayAdapter<Hauptkategorie> dataAdapter = new ArrayAdapter<Hauptkategorie>(this,
@@ -176,7 +201,14 @@ OnItemSelectedListener {
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
  
         // attaching data adapter to spinner
-        spinnerHauptkategorie.setAdapter(dataAdapter);       
+        spinnerHauptkategorie.setAdapter(dataAdapter);  
+        
+        // Wenn es eine Hauptkategorie gab, die Durch die Suche gefunden wurde, dann wird diese jetzt als vorgewähtl in der Liste gesetzt:
+        if (hkSearch != null) {
+        	int hkPos = ((ArrayAdapter<Hauptkategorie>) spinnerHauptkategorie.getAdapter()).getPosition(hkSearch);
+        	System.out.println("Set position " + hkPos + " as preselected");
+        	spinnerHauptkategorie.setSelection(hkPos);
+        }
     }
     
     
@@ -252,15 +284,6 @@ OnItemSelectedListener {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-	
-	
-//	public void showData(String s){
-//		DataBaseHelper db = new DataBaseHelper(getApplicationContext()); 
-//	    db.openDataBase();
-//		String data = db.getArtikel(s);
-//		db.close();
-//		tv.setText(data);
-//	}
 	
 	/**
 	 * Zeigt die Artikeldaten in der Tabelle an. 
