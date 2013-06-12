@@ -116,6 +116,7 @@ CREATE TABLE IF NOT EXISTS `artikel` (
   `preis` float DEFAULT NULL,
   `bildname` varchar(25) NOT NULL,
   fk_produktkategorien int(11) NOT NULL,
+  beschreibung varchar(255),
   PRIMARY KEY (`_id`)
 );
 
@@ -123,8 +124,8 @@ CREATE TABLE IF NOT EXISTS `artikel` (
 -- Daten für Tabelle `artikel`
 --
 
-INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
-(10101001, '07B3', 'Holzbohrer 50x6', 1.99, 'holzbohrer',10101000);
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`, beschreibung) VALUES
+(10101001, '07B3', 'Holzbohrer 50x6', 1.99, 'holzbohrer',10101000, 'Holzbohrer 50x6 für den ambitionierten Heimwerker. Stiftung Warentest sehr gut');
 INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
 (10101002, '07B2', 'Holzbohrer 70x8', 2.99, 'holzbohrer',10101000);
 INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES

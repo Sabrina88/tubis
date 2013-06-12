@@ -19,6 +19,7 @@ import android.widget.GridView;
 import android.widget.Spinner;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.baumarkt.model.Artikel;
 import com.example.baumarkt.model.Hauptkategorie;
@@ -338,6 +339,8 @@ OnItemSelectedListener {
 		});
 		
 //		tv.setText(sb.toString());
+		
+		Toast.makeText(getApplicationContext(), "Klicken Sie für weitere Informatinen auf den Artikel", Toast.LENGTH_LONG).show();
 	}
 	
 	private void setSpinnerUnterkategorie(int id) {
