@@ -15,7 +15,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="16dp"
-        android:text="@string/search_headline" />
+        android:text="@string/search_headline"
+        android:textColor="@color/Headline1Color"
+        android:textSize="@dimen/Headline1" />
 
     <TextView
         android:id="@+id/textView2"
