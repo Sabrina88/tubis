@@ -15,15 +15,6 @@
         android:layout_height="wrap_content"
         android:text="@string/hello_world" />
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="56dp"
-        android:src="@drawable/willkommen" />
-
     <ImageButton
         android:id="@+id/imageButton1"
         android:layout_width="wrap_content"
@@ -32,13 +23,30 @@
         android:layout_alignParentLeft="true"
         android:src="@drawable/kategorie" />
 
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignTop="@+id/textView1"
+        android:src="@drawable/willkommen" />
+
     <ImageButton
         android:id="@+id/imageButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="30dp"
-        android:layout_toRightOf="@+id/imageButton1"
+        android:layout_alignRight="@+id/imageView1"
+        android:layout_below="@+id/imageView1"
+        android:layout_marginTop="33dp"
         android:src="@drawable/suchenversuch" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_toRightOf="@+id/textView1"
+        android:src="@drawable/warenkorb" />
 
 </RelativeLayout>
