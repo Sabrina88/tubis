@@ -14,8 +14,8 @@
         <item >Abbruch</item>
     </string-array>
     <string name="detail_view_headline">Artikeldetail</string>
-    <string name="detail_view_name">Artikelname</string>
-    <string name="detail_view_standort">Standort</string>
-    <string name="detail_view_preis">Preis</string>
-    <string name="detail_view_beschreibung">Beschreibung</string>
+    <string name="detail_view_name">Artikelname:</string>
+    <string name="detail_view_standort">Standort:</string>
+    <string name="detail_view_preis">Preis:</string>
+    <string name="detail_view_beschreibung">Beschreibung:</string>
 </resources>

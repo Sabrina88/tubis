@@ -23,6 +23,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.baumarkt.dialog.ArticelDetailDialog;
 import com.example.baumarkt.dialog.ChooseArticleAction;
 import com.example.baumarkt.model.Artikel;
 import com.example.baumarkt.model.Hauptkategorie;
@@ -402,7 +403,8 @@ public class MainActivity extends FragmentActivity implements OnItemSelectedList
 			
 			//Auswahl Artikeldetail
 			if (item == 0) {
-				
+				DialogFragment detailDialog = new ArticelDetailDialog();
+				detailDialog.show(getSupportFragmentManager(), "ArticelDetailDialog");
 			}
 			
 		}
