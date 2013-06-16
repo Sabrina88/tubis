@@ -9,6 +9,8 @@ import java.util.Set;
 import android.app.Activity;
 import android.database.SQLException;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,14 +23,14 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.baumarkt.dialog.ChooseArticleAction;
 import com.example.baumarkt.model.Artikel;
 import com.example.baumarkt.model.Hauptkategorie;
 import com.example.baumarkt.model.Produktkategorie;
 import com.example.baumarkt.model.Unterkategorie;
 import com.example.test.R;
 
-public class MainActivity extends Activity implements
-OnItemSelectedListener {
+public class MainActivity extends FragmentActivity implements OnItemSelectedListener, ChooseArticleAction.ArticelActionChoiceresult {
 
 	// Set all instance variables to private to avoid access from outer space
 	 // Spinner element
@@ -325,6 +327,8 @@ OnItemSelectedListener {
 			
 			public void onItemClick(AdapterView<?> parent, View v, int pos, long id) {
 				System.out.println("Click on ResultGrid! Pos: " + pos + " id: " + id);
+				DialogFragment dialog = new ChooseArticleAction();
+				dialog.show(getSupportFragmentManager(), "ChooseArticleAction");
 			}
 		});
 		
@@ -386,6 +390,21 @@ OnItemSelectedListener {
 			int pkPos = ((ArrayAdapter<Produktkategorie>) spinnerProduktkategorie.getAdapter()).getPosition(pkSearch);
 	        spinnerProduktkategorie.setSelection(pkPos);
 	        System.out.println("Set Spinner Produktkategorie to positioin: " + pkPos);
+		}
+	}
+	
+	@Override
+	public void itemSelected(DialogFragment dialog){
+		if (dialog instanceof ChooseArticleAction) {
+			ChooseArticleAction action = (ChooseArticleAction) dialog;
+			int item = action.getSelectedItem();
+			System.out.println("Main Activity knows which Item was presse: " + item);
+			
+			//Auswahl Artikeldetail
+			if (item == 0) {
+				
+			}
+			
 		}
 	}
 }

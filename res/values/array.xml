@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="dialog_article_options">
+        <item >Hinzufügen zu Einkaufsliste</item>
+        <item >Standort anzeigen</item>
+        <item >Abbruch</item>
+    </string-array>
+    
+</resources>
