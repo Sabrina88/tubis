@@ -22,9 +22,13 @@ public class ChooseArticleAction extends DialogFragment {
 	
 	private int selectedItem = -1;
 	ArticelActionChoiceresult mListener;
+	private int artikelId = -1;
 	
 	@Override
 	public Dialog onCreateDialog(Bundle savedSate) {
+		Bundle b = getArguments();
+		artikelId =  b.getInt("ARTICLE_ID");
+		System.out.println("Open ChooseArticleAction with artikel ID: " + artikelId);
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 		builder.setTitle("Bitte Aktion auswählen");
 		builder.setItems(new String[]{"Artikel Details","Zu Einkaufsliste hinzufügen", "Standort anzeigen", "Abbruch"}, new DialogInterface.OnClickListener() {
@@ -51,5 +55,9 @@ public class ChooseArticleAction extends DialogFragment {
 	
 	public int getSelectedItem() {
 		return selectedItem;
+	}
+	
+	public int getArtikelId() {
+		return artikelId;
 	}
 }

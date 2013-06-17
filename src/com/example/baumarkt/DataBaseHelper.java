@@ -412,7 +412,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     	
 	    String selectQuery = "SELECT  * FROM " + TABLE_ARTICLE + " WHERE  fk_produktkategorien = " + pk.getId();
 	      
-	    System.out.println("[SQL] Select alle artikles for Unterkategorie: " + pk.getId());
+	    System.out.println("[SQL] Select alle artikel for Unterkategorie: " + pk.getId());
 	    System.out.println("[SQL] Query: " + selectQuery);
 	    SQLiteDatabase db = this.getReadableDatabase();
 	    Cursor cursor = db.rawQuery(selectQuery,null);
@@ -433,6 +433,38 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 		
 
 		return result;
+    }
+    
+    /**
+     * Selektiert einen Artikel anhand der übergebenen ID
+     * 
+     * @param id
+     * @return Artikel
+     */
+    public Artikel getArtikelById(int id) {
+    	Artikel result = null;
+    	String sql = "SELECT * FROM " + TABLE_ARTICLE + " WHERE _id = " + id;
+    	System.out.println("[SQL] select artikel for ID" + id);
+    	System.out.println("[SQL] Query: " + sql);
+    	
+    	SQLiteDatabase db = this.getReadableDatabase();
+	    Cursor cursor = db.rawQuery(sql,null);
+	    
+		if (cursor.moveToFirst()) {
+			System.out.println("Artikel found...");
+			int idArtikel = cursor.getInt(0);
+            String standort = cursor.getString(1);
+            String bezeichnung = cursor.getString(2);
+            float preis = cursor.getFloat(3);
+            String bildname = cursor.getString(4);
+            
+            result = new Artikel(idArtikel, bezeichnung, standort, preis, bildname);
+		}
+		else {
+			System.out.println("Artikel not found!");
+		}
+    	
+    	return result;
     }
 
 

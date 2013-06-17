@@ -130,7 +130,6 @@ public class Search extends Activity implements
 								else
 								{
 									Toast.makeText(getApplicationContext(), "Es wurden keine Kategorien für das Suchkriterium gefunden",Toast.LENGTH_LONG).show();
-
 								}
 							}
 						}

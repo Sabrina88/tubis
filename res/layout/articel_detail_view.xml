@@ -39,7 +39,7 @@
                 android:text="@string/detail_view_name" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/textViewArtikelname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
@@ -58,7 +58,7 @@
                 android:text="@string/detail_view_standort" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/textViewStandort"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
@@ -77,7 +77,7 @@
                 android:text="@string/detail_view_preis" />
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/textViewPreis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
@@ -92,7 +92,7 @@
 	            android:text="@string/detail_view_beschreibung" />
 	
 	        <TextView
-	            android:id="@+id/textView9"
+	            android:id="@+id/textViewBeschreibung"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:text="TextView" />

@@ -2,11 +2,8 @@ package com.example.baumarkt;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-import android.app.Activity;
 import android.database.SQLException;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -294,7 +291,7 @@ public class MainActivity extends FragmentActivity implements OnItemSelectedList
 	public void showData(Produktkategorie pk){
 		DataBaseHelper db = new DataBaseHelper(getApplicationContext()); 
 	    db.openDataBase();
-		Set<Artikel> artikel = new HashSet<Artikel>(db.getArtikel(pk));
+		final List<Artikel> artikel = new ArrayList<Artikel>(db.getArtikel(pk));
 		db.close();
 
 		// Sets the result into the arra plus the headline ( +1). But for each Artikel we'll need 4 columns! So Length of result 4 times! (*4)
@@ -329,6 +326,11 @@ public class MainActivity extends FragmentActivity implements OnItemSelectedList
 			public void onItemClick(AdapterView<?> parent, View v, int pos, long id) {
 				System.out.println("Click on ResultGrid! Pos: " + pos + " id: " + id);
 				DialogFragment dialog = new ChooseArticleAction();
+				Bundle b = new Bundle();
+				int aId = artikel.get(pos % 4).getId();
+				System.out.println("Set Artikel ID: " + aId);
+				b.putInt("ARTICLE_ID", aId);
+				dialog.setArguments(b);
 				dialog.show(getSupportFragmentManager(), "ChooseArticleAction");
 			}
 		});
@@ -404,6 +406,9 @@ public class MainActivity extends FragmentActivity implements OnItemSelectedList
 			//Auswahl Artikeldetail
 			if (item == 0) {
 				DialogFragment detailDialog = new ArticelDetailDialog();
+				Bundle b = new Bundle();
+				b.putInt("ARTICLE_ID", action.getArtikelId());
+				detailDialog.setArguments(b);
 				detailDialog.show(getSupportFragmentManager(), "ArticelDetailDialog");
 			}
 			

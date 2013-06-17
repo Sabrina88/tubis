@@ -8,8 +8,14 @@ public class Artikel {
 	private float preis;
 	private String bildname;
 	private Produktkategorie produktkategorie;
+	private String beschreibung;
 	
 	public Artikel() {
+	}
+	
+	public Artikel(int id, String bezeichnung, String standort, float preis, String bildname, String beschreibung) {
+		this(id, bezeichnung, standort, preis, bildname);
+		this.beschreibung = beschreibung;
 	}
 	
 	public Artikel(int id, String bezeichnung, String standort, float preis, String bildname) {
@@ -19,7 +25,6 @@ public class Artikel {
 		this.preis = preis;
 		this.bildname = bildname;
 	}
-	
 	
 	public int getId() {
 		return id;
@@ -56,6 +61,14 @@ public class Artikel {
 	}
 	public void setProduktkategorie(Produktkategorie produktkategorie) {
 		this.produktkategorie = produktkategorie;
+	}
+	
+	public void setBeschreibung(String beschreibung) {
+		this.beschreibung = beschreibung;
+	}
+	
+	public String getBeschreibung() {
+		return beschreibung;
 	}
 	
 	@Override
