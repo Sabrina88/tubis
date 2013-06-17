@@ -126,52 +126,52 @@ CREATE TABLE IF NOT EXISTS `artikel` (
 
 INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`, beschreibung) VALUES
 (10101001, '07B3', 'Holzbohrer 50x6', 1.99, 'holzbohrer',10101000, 'Holzbohrer 50x6 fÃ¼r den ambitionierten Heimwerker. Stiftung Warentest sehr gut');
-INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
-(10101002, '07B2', 'Holzbohrer 70x8', 2.99, 'holzbohrer',10101000);
-INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
-(10101003, '07B1', 'Holzbohrer 90x10', 2.99, 'holzbohrer',10101000);
-INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
-(10101004, '07A2', 'Holzbohrer 30x4', 1.49, 'holzbohrer',10101000);
-INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
-(10102001, '07A2', 'Stahlbohrer 50x7', 2.99, 'stahlbohrer',10102000);
-INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
-(10102002, '07A1', 'Stahlbohrer 70x9', 3.99, 'stahlbohrer',10102000);
-INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
-(10201001, '03C2', 'Bohrhammer Bosch PBH 2800 RE inkl. Flachmei&szlig;el', 140.99, 'bohrhammer',10201000);
-INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
-(10201002, '03C1', 'Bohrhammer Bosch PBH 3000-2 FRE ', 208.99, 'bohrhammer',10201000);
-INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
-(10201003, '03C3', 'Tischbohrmaschine Bosch PBD 40', 280.99, '',10201000);
-INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
-(10202001, '03D1', 'Schlagbohrmaschine Bosch PSB 500 RE', 55.99, 'schlagbohrmaschine',10202000);
-INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
-(10202002, '03D2', 'Schlagbohrmaschine Bosch PSB 750 RCE', 79.99, 'schlagbohrmaschine',10202000);
-INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
-(20105001, '04C2', 'Holzschraube Linsensenkkopf m. I-Stern 3,5 x 25 mm, DIN 95, Vernickelt, 200 StÃ¼ck', 2.15, '',20105000);
-INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
-(20106001, '04A2', 'Spreizdï¿½bel Barracuda SD 8/40+S', 2.89, '',20106000);
-INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
-(20106002, '04A1', 'Spreizdï¿½bel Barracuda SD 6/30+S', 2.99, '',20106000);
-INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
-(20106003, '04B2', 'AllzweckdÃ¼bel TRI 6/36 ', 2.99, '',20106000);
-INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
-(20201001, '04B3', 'Sechskantmutter selbstsichernd DIN 985, M3 galv.verzinkt, 100 StÃ¼ck', 2.99, '',20201000);
-INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
-(80102001, '01D1', 'Halogen-Stehlampe Spider Glaskugel mit Chrom', 108.95, '',80102000);
-INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
-(80102002, '01D2', 'Halogen-Stehlampe sinned chrom mit Metallkopf', 158.9, '',80102000);
-INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
-(80102003, '01E1', 'Massive Halogen-Bodenleuchte 5-flg. Aiken ', 182, '',80102000);
-INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
-(80102004, '01E2', 'dimmbarer LED-Fluter mit Lesearm in Nickel matt, getrennt ', 219, '',80102000);
-INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
-(80102005, '01D3', 'Innovative LED-Stehleuchte inklusive Power LED ', 149.9, '',80102000);
-INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
-(80201001, '02A3', 'Halogenbirne E27 100W', 1.99, 'halogenbirne',80201001);
-INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
-(80201002, '02A2', 'Halogenbirne E27 60W', 1.99, 'halogenbirne',80201001);
-INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`) VALUES
-(80201003, '02A1', 'Halogenbirne E15 45W', 1.99, 'halogenbirne',80201001);
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`, beschreibung) VALUES
+(10101002, '07B2', 'Holzbohrer 70x8', 2.99, 'holzbohrer',10101000, 'Universeller Holzbohrer für viele Bohrdurchmesser nutzbar, jedoch nur in dünnem Material.Stiftung Warentest sehr gut');
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`, beschreibung) VALUES
+(10101003, '07B1', 'Holzbohrer 90x10', 2.99, 'holzbohrer',10101000, 'Dieser Bohrer ist vor allem für die Leitungsverlegung im konstruktiven Holzbau geeignet - die Schnittqualität ist dementsprechend weniger wichtig. Stiftung Warentest gut');
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`, beschreibung) VALUES
+(10101004, '07A2', 'Holzbohrer 30x4', 1.49, 'holzbohrer',10101000, 'Holzbohrer 30x4 hat eine sehr gute Bohrleistungen und lange Standzeit');
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`, beschreibung) VALUES
+(10102001, '07A2', 'Stahlbohrer 50x7', 2.99, 'stahlbohrer',10102000, 'Der Spezialist in der Bohrerfertigung, wird den höchsten Ansprüchen gerecht. Der besondere Anschliff ermöglicht sicheres Ansetzen und einen sehr guten');
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`, beschreibung) VALUES
+(10102002, '07A1', 'Stahlbohrer 70x9', 3.99, 'stahlbohrer',10102000, 'Optimales Bohrergebnis mit minimalem Vorschub');
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`, beschreibung) VALUES
+(10201001, '03C2', 'Bohrhammer Bosch PBH 2800 RE inkl. Flachmei&szlig;el', 140.99, 'bohrhammer',10201000, 'Der neue Boschhammer PBH 2800 RE ist besonders leicht und liegt angenehm und sicher in der Hand');
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`, beschreibung) VALUES
+(10201002, '03C1', 'Bohrhammer Bosch PBH 3000-2 FRE ', 208.99, 'bohrhammer',10201000, 'Das Bosch Bohrhammer PBH 3000 FRE Set eignet sich optimal für alle Heimwerker, die es mit Abrissarbeiten zu tun haben, die viel in Sichtbeton bohren und bei denen Qualität ruhig einen etwas höheren Preis haben darf');
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`, beschreibung) VALUES
+(10201003, '03C3', 'Tischbohrmaschine Bosch PBD 40', 280.99, '',10201000, 'Leistung: 710 W, Elektronik, Gewicht: 11.2 kg');
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`, beschreibung) VALUES
+(10202001, '03D1', 'Schlagbohrmaschine Bosch PSB 500 RE', 55.99, 'schlagbohrmaschine',10202000, 'Leistung: 500 W, Abgabeleistung: 228 W, Max. Drehmoment: 7,5 Nm, Leerlaufdrehzahl: 50 –3000 min-1, Schlagzahl: 48000 min-1, Gewicht 1,5 kg, Max. Bohrdurchmesser in Beton: 13 mm, Max. Bohrdurchmesser in Stahl: 10 mm, Max. Bohrdurchmesser in Holz: 20 mm');
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`, beschreibung) VALUES
+(10202002, '03D2', 'Schlagbohrmaschine Bosch PSB 750 RCE', 79.99, 'schlagbohrmaschine',10202000, 'Schlagbohrmaschine Bosch PSB 750 RCE');
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`, beschreibung) VALUES
+(20105001, '04C2', 'Holzschraube Linsensenkkopf m. I-Stern 3,5 x 25 mm, DIN 95, Vernickelt, 200 StÃ¼ck', 2.15, '',20105000, 'Marke: Dresselhaus, Produkttyp: Blechschraube, Bohrschraube Linsenkopf I-Stern 4,2 x 16 mm DIN 7504 Galv. verz., Oberkategorie: Eisenwaren, schraubetyp: Bohrschraube I-Stern');
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`, beschreibung) VALUES
+(20106001, '04A2', 'Spreizdï¿½bel Barracuda SD 8/40+S', 2.89, '',20106000, 'Die Dübel sind für Befestigung an fast allen Baustoffen geeignet. Ob Beton, Kalksandstein, Vollziegel, der Dübel hält bei fachgerechter Bohrung sicher und fest. Ungeeignet ist der Dübel bei Leichtbauwänden wie Rigips.');
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`, beschreibung) VALUES
+(20106002, '04A1', 'Spreizdï¿½bel Barracuda SD 6/30+S', 2.99, '',20106000, 'Schwerlastdübel');
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`, beschreibung) VALUES
+(20106003, '04B2', 'AllzweckdÃ¼bel TRI 6/36 ', 2.99, '',20106000, 'Der Allzweckdübel TRI 6/36 hat sich zu einem Universal Dübel gemausert.');
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`, beschreibung) VALUES
+(20201001, '04B3', 'Sechskantmutter selbstsichernd DIN 985, M3 galv.verzinkt, 100 StÃ¼ck', 2.99, '',20201000, 'Sechskantmutter aus Stahl 6/8 verzinkt oder Edelstahl A2');
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`, beschreibung) VALUES
+(80102001, '01D1', 'Halogen-Stehlampe Spider Glaskugel mit Chrom', 108.95, '',80102000, 'Höhe: 168 cm');
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`, beschreibung) VALUES
+(80102002, '01D2', 'Halogen-Stehlampe sinned chrom mit Metallkopf', 158.9, '',80102000, 'Höhe: 150 cm');
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`, beschreibung) VALUES
+(80102003, '01E1', 'Massive Halogen-Bodenleuchte 5-flg. Aiken ', 182, '',80102000, 'Material: Metall ; Glas , Besonderheiten: mit Fußschalter , Länge: 250 mm , Breite: 180 mm , Höhe: 1550 mm , Flamme: 5 , Watt: G4 230V 20W , Leuchtmittel: inkl.Leuchtmittel , Schutzklasse: 2 , Schutzart: IP20');
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`, beschreibung) VALUES
+(80102004, '01E2', 'dimmbarer LED-Fluter mit Lesearm in Nickel matt, getrennt ', 219, '',80102000, 'Am Deckenfluter befindet sich ein Metallreflektor, der über einen kleinen Lichtaustritt das Licht nach oben abgibt');
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`, beschreibung) VALUES
+(80102005, '01D3', 'Innovative LED-Stehleuchte inklusive Power LED ', 149.9, '',80102000, 'Die Standleuchte überzeugt durch ihre schlichte kompakte Bauweise und wird auch Sie mit vielfältigen Funktionen beeindrucken');
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`, beschreibung) VALUES
+(80201001, '02A3', 'Halogenbirne E27 100W', 1.99, 'halogenbirne',80201001, 'Stiftung Warentest sehr hell');
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`, beschreibung) VALUES
+(80201002, '02A2', 'Halogenbirne E27 60W', 1.99, 'halogenbirne',80201001, 'Stiftung Warentest lange Lebensdauer');
+INSERT INTO `artikel` (`_id`, `artikelstandort`, `artikelbezeichnung`, `preis`, `bildname`,`fk_produktkategorien`, beschreibung) VALUES
+(80201003, '02A1', 'Halogenbirne E15 45W', 1.99, 'halogenbirne',80201001, 'Stiftung Warentest sehr geringer Verbrauch');
 
 -- --------------------------------------------------------
 
