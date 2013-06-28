@@ -457,8 +457,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             String bezeichnung = cursor.getString(2);
             float preis = cursor.getFloat(3);
             String bildname = cursor.getString(4);
+            String beschreibung = cursor.getString(6);
             
-            result = new Artikel(idArtikel, bezeichnung, standort, preis, bildname);
+            result = new Artikel(idArtikel, bezeichnung, standort, preis, bildname, beschreibung);
 		}
 		else {
 			System.out.println("Artikel not found!");
