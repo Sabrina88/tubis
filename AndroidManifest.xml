@@ -42,13 +42,20 @@
         </activity>
         <activity
             android:name="com.example.baumarkt.Einkaufsliste"
-            android:label="@string/title_activity_einkaufsliste" android:theme="@style/AppBaseTheme" android:description="@string/title_activity_einkaufsliste" android:screenOrientation="sensor">
+            android:description="@string/title_activity_einkaufsliste"
+            android:label="@string/title_activity_einkaufsliste"
+            android:screenOrientation="sensor"
+            android:theme="@style/AppBaseTheme" >
             <intent-filter>
                 <action android:name="com.example.test.EINKAUFSLISTE" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.baumarkt.MapActitivity"
+            android:label="@string/title_activity_map_actitivity" >
+        </activity>
     </application>
 
-</manifest> 
+</manifest>
