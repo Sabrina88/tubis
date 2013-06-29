@@ -22,8 +22,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-   
-          <activity
+        <activity
             android:name="com.example.baumarkt.StartPoint"
             android:label="@string/app_name" >
             <intent-filter>
@@ -32,7 +31,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
         <activity
             android:name="com.example.baumarkt.Search"
             android:label="@string/app_name" >
@@ -42,7 +40,15 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
-        </application>
+        <activity
+            android:name="com.example.baumarkt.Einkaufsliste"
+            android:label="@string/title_activity_einkaufsliste" android:theme="@style/AppBaseTheme" android:description="@string/title_activity_einkaufsliste" android:screenOrientation="sensor">
+            <intent-filter>
+                <action android:name="com.example.test.EINKAUFSLISTE" />
 
-</manifest>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest> 

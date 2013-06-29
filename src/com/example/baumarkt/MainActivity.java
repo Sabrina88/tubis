@@ -18,8 +18,6 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.Spinner;
-import android.widget.TableRow;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.baumarkt.dialog.ArticelDetailDialog;
@@ -43,8 +41,6 @@ public class MainActivity extends FragmentActivity implements OnItemSelectedList
 	private List<Unterkategorie> unterkategorien;
 	
 	// String      onSelect;
-	private TextView tv;
-	private TableRow tableRow1;
 	private int searchResultHauptkategorie;
 	private int searchResultProduktkategorie;
 	private int searchResultUnterkategorie;
@@ -175,10 +171,6 @@ public class MainActivity extends FragmentActivity implements OnItemSelectedList
        
        
 	}              
-        
-	
-
-	
 
 	  /**
      * Function to load the spinner data from SQLite database

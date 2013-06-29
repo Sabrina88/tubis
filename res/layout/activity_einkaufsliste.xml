@@ -1,0 +1,28 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/einkaufsliste_headline"
+        android:textColor="@color/Headline1Color"
+        android:textSize="@dimen/Headline1" />
+
+    <GridView
+        android:id="@+id/gridView1"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:numColumns="4" >
+    </GridView>
+
+    <GridView
+        android:id="@+id/gridView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="4" >
+    </GridView>
+
+</LinearLayout>

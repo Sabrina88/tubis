@@ -12,7 +12,7 @@ import com.example.test.R;
 
 public class StartPoint extends Activity{
 	
-	ImageButton category,search; 
+	private ImageButton category,search, einkaufsliste; 
 	public static Einkaufszettel WARENKORB = new Einkaufszettel();
 	
 	@Override
@@ -26,20 +26,22 @@ public class StartPoint extends Activity{
 	
 		category = (ImageButton) findViewById(R.id.imageButton1);
 		search = (ImageButton) findViewById(R.id.imageButton2);
+		einkaufsliste = (ImageButton) findViewById(R.id.imageButton3);
 		
 		
-					category.setOnClickListener(new View.OnClickListener() {
-						
-						@Override
-						public void onClick(View v) {
-							try{
-								Intent openStartingPoint = new Intent("com.example.test.MAINACTIVITY");
-								startActivity(openStartingPoint);
-								}catch(Exception e){
-									System.out.println("SFGSG");
-								}
-						}
-					});
+		category.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				try{
+					Intent openStartingPoint = new Intent("com.example.test.MAINACTIVITY");
+					startActivity(openStartingPoint);
+					}catch(Exception e){
+						System.out.println(e.getMessage());
+						e.printStackTrace();
+					}
+			}
+		});
 		
 	
 	
@@ -51,10 +53,28 @@ public class StartPoint extends Activity{
 				Intent openStartingPoint = new Intent("com.example.test.SEARCH");
 				startActivity(openStartingPoint);
 				}catch(Exception e){
-					System.out.println("SFGSG");
+					System.out.println(e.getMessage());
+					e.printStackTrace();
 				}
 				
 			}
+		});
+		
+		einkaufsliste.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				try{
+				Intent openStartingPoint = new Intent("com.example.test.EINKAUFSLISTE");
+				startActivity(openStartingPoint);
+				}catch(Exception e){
+					System.out.println(e.getMessage());
+					e.printStackTrace();
+				}
+				
+			}
+				
 		});
 }
 	
