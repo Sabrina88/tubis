@@ -71,6 +71,36 @@ public class Artikel {
 		return beschreibung;
 	}
 	
+	/**
+	 * Dient zum ermitteln ob ein Artikel gleich einem anderen ist.
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null) {
+			return false;
+		}
+		
+		if (this == obj) {
+			return true;
+		}
+		
+		if (!(obj instanceof Artikel)) {
+			return false;
+		}
+		
+		Artikel other = (Artikel) obj;
+		
+		return id == other.id;
+	}
+	
+	/**
+	 * Muss überschrieben werden, wenn equals überschrieben wird. 
+	 */
+	@Override
+	public int hashCode() {
+		return id;
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();

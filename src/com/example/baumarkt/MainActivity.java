@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.database.SQLException;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -46,6 +48,7 @@ public class MainActivity extends FragmentActivity implements OnItemSelectedList
 	private int searchResultHauptkategorie;
 	private int searchResultProduktkategorie;
 	private int searchResultUnterkategorie;
+	private DataBaseHelper myDbHelper;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +70,7 @@ public class MainActivity extends FragmentActivity implements OnItemSelectedList
 		
 		
 		
-		 DataBaseHelper myDbHelper = new DataBaseHelper(this);
+		 myDbHelper = new DataBaseHelper(this);
 	 
 	        try {
 	 
@@ -295,14 +298,14 @@ public class MainActivity extends FragmentActivity implements OnItemSelectedList
 		db.close();
 
 		// Sets the result into the arra plus the headline ( +1). But for each Artikel we'll need 4 columns! So Length of result 4 times! (*4)
-		String[] result = new String[(artikel.size()) * 4]; 
-		String[] headlineResult = new String[4];
+		String[] result = new String[(artikel.size()) * 3]; 
+		String[] headlineResult = new String[3];
 		StringBuilder sb = new StringBuilder();
 		
 		headlineResult[0] = "Bezeichnung";
-		headlineResult[1] = "Peis";
+		headlineResult[1] = "Preis";
 		headlineResult[2] = "Standort";
-		headlineResult[3] = "Bild";
+//		headlineResult[3] = "Bild";
 		
 		int i = 0;
 		
@@ -314,7 +317,7 @@ public class MainActivity extends FragmentActivity implements OnItemSelectedList
 			result[i] = a.getBezeichnung();
 			result[++i] = String.valueOf(a.getPreis() + " €");
 			result[++i] = a.getStandort();
-			result[++i] = a.getBildname();
+//			result[++i] = a.getBildname();
 			i++;
 		}
 		
@@ -327,7 +330,10 @@ public class MainActivity extends FragmentActivity implements OnItemSelectedList
 				System.out.println("Click on ResultGrid! Pos: " + pos + " id: " + id);
 				DialogFragment dialog = new ChooseArticleAction();
 				Bundle b = new Bundle();
-				int aId = artikel.get(pos % 4).getId();
+				//Position durch 3 Teilen, weil Android die pos je Spalte hochzählt. Wir interessieren uns aber nur für die Zeile:
+				int calculatedIndex = (int) pos / 3;
+				System.out.println("calculatedIndex: " + calculatedIndex);
+				int aId = artikel.get(calculatedIndex).getId();
 				System.out.println("Set Artikel ID: " + aId);
 				b.putInt("ARTICLE_ID", aId);
 				dialog.setArguments(b);
@@ -410,6 +416,28 @@ public class MainActivity extends FragmentActivity implements OnItemSelectedList
 				b.putInt("ARTICLE_ID", action.getArtikelId());
 				detailDialog.setArguments(b);
 				detailDialog.show(getSupportFragmentManager(), "ArticelDetailDialog");
+			}
+			else if (item == 1) {
+				Artikel a = myDbHelper.getArtikelById(action.getArtikelId());
+				StartPoint.WARENKORB.addArtikel(a);
+				
+				// 1. Instantiate an AlertDialog.Builder with its constructor
+				AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+				// 2. Chain together various setter methods to set the dialog characteristics
+				builder.setMessage(R.string.Warenkorb_add)
+				       .setTitle(R.string.Warenkorb_add_title);
+				
+				// Add OK Button:
+				builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+			           public void onClick(DialogInterface dialog, int id) {
+			               // Hier könnten wir auf das OK reagieren. Wir wollten ja aber den user nur informieren
+			           }
+			       });
+
+				// 3. Get the AlertDialog from create()
+				AlertDialog dialogWarenkorbAdd = builder.create();
+				dialogWarenkorbAdd.show();
 			}
 			
 		}

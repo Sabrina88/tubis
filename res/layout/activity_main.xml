@@ -48,7 +48,7 @@
         android:textSize="2sp"
         android:layout_below="@+id/gridView2"
         android:layout_alignParentLeft="true"
-        android:numColumns="4" >
+        android:numColumns="3" >
 
     </GridView>
 
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/spinner3"
-        android:numColumns="4"
+        android:numColumns="3"
         android:smoothScrollbar="true"
         android:textSize="2sp" >
 

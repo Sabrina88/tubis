@@ -1,25 +1,19 @@
 package com.example.baumarkt;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 
-import com.example.baumarkt.model.Hauptkategorie;
-import com.example.baumarkt.model.Produktkategorie;
-import com.example.baumarkt.model.Unterkategorie;
+import com.example.baumarkt.model.Einkaufszettel;
 import com.example.test.R;
 
 
 public class StartPoint extends Activity{
 	
 	ImageButton category,search; 
+	public static Einkaufszettel WARENKORB = new Einkaufszettel();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

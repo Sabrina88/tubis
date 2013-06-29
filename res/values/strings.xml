@@ -18,4 +18,7 @@
     <string name="detail_view_standort">Standort:</string>
     <string name="detail_view_preis">Preis:</string>
     <string name="detail_view_beschreibung">Beschreibung:</string>
+    <string name="OK">Ok</string>
+    <string name="Warenkorb_add">Artikel wurde dem Warenkorb hinzugefügt</string>
+    <string name="Warenkorb_add_title">Artikel hinzugefügt</string>
 </resources>
