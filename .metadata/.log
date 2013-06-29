@@ -23,3 +23,25 @@ Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.android.ide.
 
 !ENTRY com.android.ide.eclipse.ddms 4 0 2013-04-22 15:07:49.459
 !MESSAGE DDMS files not found: D:\Program Files\adt-bundle-windows-x86-20130219\eclipse\platform-tools\adb.exe D:\Program Files\adt-bundle-windows-x86-20130219\eclipse\tools\hprof-conv.exe D:\Program Files\adt-bundle-windows-x86-20130219\eclipse\tools\traceview.bat 
+!SESSION 2013-05-08 20:27:47.038 -----------------------------------------------
+eclipse.buildId=v21.1.0-569685
+java.version=1.7.0_07
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=de_DE
+Framework arguments:  -product com.android.ide.eclipse.adt.package.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.android.ide.eclipse.adt.package.product
+
+!ENTRY org.eclipse.osgi 2 1 2013-05-08 20:28:11.683
+!MESSAGE NLS unused message: ICategory_general in: org.eclipse.ui.internal.messages
+
+!ENTRY org.eclipse.osgi 2 1 2013-05-08 20:28:11.684
+!MESSAGE NLS unused message: ViewsPreferencePage_Theme in: org.eclipse.ui.internal.messages
+
+!ENTRY org.eclipse.osgi 2 1 2013-05-08 20:29:18.440
+!MESSAGE NLS unused message: JavaEditorPreferencePage_highlightMatchingBrackets in: org.eclipse.jdt.internal.ui.preferences.PreferencesMessages
+
+!ENTRY org.eclipse.osgi 2 1 2013-05-08 20:29:18.714
+!MESSAGE NLS unused message: SourceAttachmentBlock_filename_label in: org.eclipse.jdt.internal.ui.wizards.NewWizardMessages
+
+!ENTRY org.eclipse.osgi 2 1 2013-05-08 20:29:18.714
+!MESSAGE NLS unused message: SourceAttachmentBlock_filename_internal_button in: org.eclipse.jdt.internal.ui.wizards.NewWizardMessages
