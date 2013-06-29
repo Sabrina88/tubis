@@ -6,6 +6,7 @@ import java.util.List;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.SQLException;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -430,6 +431,15 @@ public class MainActivity extends FragmentActivity implements OnItemSelectedList
 				// 3. Get the AlertDialog from create()
 				AlertDialog dialogWarenkorbAdd = builder.create();
 				dialogWarenkorbAdd.show();
+			}
+			else if (item == 2) {
+				try{
+					Intent openStartingPoint = new Intent("com.example.test.MAP");
+					startActivity(openStartingPoint);
+					}catch(Exception e){
+						System.out.println(e.getMessage());
+						e.printStackTrace();
+					}
 			}
 			
 		}

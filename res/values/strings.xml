@@ -26,5 +26,6 @@
     <string name="einkaufsliste_headline">Einkaufsliste</string>
     <string name="title_activity_einkaufsliste">Einkaufsliste</string>
     <string name="title_activity_map_actitivity">MapActitivity</string>
+    <string name="headline_map">Baumarktübersicht</string>
 
 </resources>

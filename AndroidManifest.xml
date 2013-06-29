@@ -54,7 +54,11 @@
         </activity>
         <activity
             android:name="com.example.baumarkt.MapActitivity"
-            android:label="@string/title_activity_map_actitivity" >
+            android:label="@string/headline_map" android:description="@string/headline_map">
+            <intent-filter>
+                <action android:name="com.example.test.MAP" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 
