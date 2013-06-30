@@ -32,7 +32,7 @@ public class ArticelDetailDialog extends DialogFragment {
 	public Dialog onCreateDialog(Bundle savedState) {
 		Bundle args = getArguments();
 		
-		// hole die ArtikelID die beim Aufruf des Dialogs übergeben werden mus:
+		// hole die ArtikelID die beim Aufruf des Dialogs übergeben werden muss:
 		int artikelid = args.getInt("ARTICLE_ID");
 		
 		System.out.println("Open Dialog for Artickel with ID: " + artikelid);
