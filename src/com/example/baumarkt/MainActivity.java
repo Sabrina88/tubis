@@ -55,6 +55,8 @@ public class MainActivity extends FragmentActivity implements OnItemSelectedList
 		resultGrid = (GridView) findViewById(R.id.gridView1);
 		headlineResultGrid = (GridView) findViewById(R.id.gridView2);
 		
+		// Prüfen ob von der Suche aufgerufen. Wenn ja, dann wurden die IDs der Kategorien vorgegeben, da diese dem 
+		// Suchergebnis entsprechen. Ansonsten ist das Bundle leer, wenn der Aufruf von der Startseite erfolgte.
 		Bundle input = getIntent().getExtras();
 		if (input != null) {
 			searchResultHauptkategorie = input.getInt(Search.KEY_HAUPTKATEGORIE);
@@ -97,35 +99,6 @@ public class MainActivity extends FragmentActivity implements OnItemSelectedList
  
         // Loading spinner data from database
         loadSpinnerHauptkategorien(); 
-        
-//        tv= (TextView) findViewById(R.id.texts);
-  
-        
-        //     tableRow1 = (TableRow) findViewById(R.id.tableRow1);
-        
-        
-//        TableLayout tl = (TableLayout)findViewById(R.id.myLayout);
-//        /* Create a new row to be added. */
-//        TableRow tr = new TableRow(this);
-//        tr.setLayoutParams(new LayoutParams(
-//                       LayoutParams.FILL_PARENT,
-//                       LayoutParams.WRAP_CONTENT));
-//             /* Create a Button to be the row-content. */
-//             Button b = new Button(this);
-//             b.setText("Dynamic Button");
-//             b.setLayoutParams(new LayoutParams(
-//                       LayoutParams.FILL_PARENT,
-//                       LayoutParams.WRAP_CONTENT));
-//             /* Add Button to row. */
-//             tr.addView(b);
-//   /* Add row to TableLayout. */
-//   tl.addView(tr,new TableLayout.LayoutParams(
-//             LayoutParams.FILL_PARENT,
-//             LayoutParams.WRAP_CONTENT));
-	 	
-       // Spinner click listener
-  //      spinner.setOnItemSelectedListener((OnItemSelectedListener) this);
-        
         
         /* Listener um auf einen Klick auf den DropDown zu reagieren*/
         spinnerHauptkategorie.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

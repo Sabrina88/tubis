@@ -13,6 +13,8 @@ import com.example.test.R;
 public class StartPoint extends Activity{
 	
 	private ImageButton category,search, einkaufsliste; 
+	
+	// Statische Variable, die den Warenkorb der gesamten APP hält. Es kann von überlal auf den Warenkorb zugegriffen werden
 	public static Einkaufszettel WARENKORB = new Einkaufszettel();
 	
 	@Override

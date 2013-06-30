@@ -123,36 +123,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
  
     	return checkDB != null ? true : false;
     }
- 
-    /**
-     * Copies your database from your local assets-folder to the just created empty database in the
-     * system folder, from where it can be accessed and handled.
-     * This is done by transfering bytestream.
-     * */
-//    private void copyDataBase() throws IOException{
-// 
-//    	//Open your local db as the input stream
-//    	InputStream myInput = myContext.getAssets().open(DB_NAME);
-// 
-//    	// Path to the just created empty db
-//    	String outFileName = DB_PATH + DB_NAME;
-// 
-//    	//Open the empty db as the output stream
-//    	OutputStream myOutput = new FileOutputStream(outFileName);
-// 
-//    	//transfer bytes from the inputfile to the outputfile
-//    	byte[] buffer = new byte[1024];
-//    	int length;
-//    	while ((length = myInput.read(buffer))>0){
-//    		myOutput.write(buffer, 0, length);
-//    	}
-// 
-//    	//Close the streams
-//    	myOutput.flush();
-//    	myOutput.close();
-//    	myInput.close();
-// 
-//    }
     
     /**
      * Verwendet das SQL File ebenen.sql um die Datenbank mit den Daten zu füllen, sollte die DB nicht vorhanden
@@ -222,42 +192,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
  
 	}
- 
-        // Add your public helper methods to access and get content from the database.
-       // You could return cursors by doing "return myDataBase.query(....)" so it'd be easy
-       // to you to create adapters for your views.
- 
-	
-	 /**
-     * Getting all labels
-     * returns list of labels
-     * */
-//    public List<String> getAllHauptkategorien(){
-//    	
-//    	
-//        List<String> labels = new ArrayList<String>();
-// 
-//        // Select All Query
-//        String selectQuery = "SELECT  * FROM " + TABLE_PRODUKTKATEGORIEN;
-// 
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        System.out.println("Hauptkategorie SQL Query: " + selectQuery);
-//        Cursor cursor = db.rawQuery(selectQuery, null);
-// 
-//        // looping through all rows and adding to list
-//        if (cursor.moveToFirst()) {
-//            do {
-//                labels.add(cursor.getString(1));
-//            } while (cursor.moveToNext());
-//        }
-// 
-//        // closing connection
-//        cursor.close();
-//        db.close();
-// 
-//        // returning lables
-//        return labels;
-//    }
+
 
 	
 	/**
@@ -332,73 +267,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
       // returning lables
       return result;
 	}
-    
-    /**
-     * Getting all labels
-     * returns list of labels
-     * */
-//    public List<String> getUnterkategorie(Hauptkategorie hauptkategorie){
-//        List<String> labels = new ArrayList<String>();
-// 
-//        String selectQuery;
-//        if(hauptkategorie!=null){
-//        // Select All Query
-//    //    String selectQuery = "SELECT  * FROM " + TABLE_LABELS;
-// 
-//        // Select All Query
-//        selectQuery = "SELECT  * FROM " + TABLE_ARTICLE + " WHERE bildname ='"+hauptkategorie.toLowerCase()+"'" ;
-//   	// selectQuery = "SELECT * FROM " + TABLE_LABELS2;
-//     
-//        }
-//        else{
-//        	System.out.println("eslse");
-//        	 selectQuery = "SELECT * FROM " + TABLE_ARTICLE;
-//        }
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        System.out.println("Unterkategorie SQL Query: " + selectQuery);
-//        Cursor cursor = db.rawQuery(selectQuery, null);
-// 
-//        // looping through all rows and adding to list
-//        if (cursor.moveToFirst()) {
-//            do {
-//                labels.add(cursor.getString(2));
-//            } while (cursor.moveToNext());
-//        }
-// 
-//        // closing connection
-//        cursor.close();
-//        db.close();
-// 
-//        // returning lables
-//        return labels;
-//    }
+
 	
     public List<String> getProduktkategorien(String unterkategorie) {
     	return null;
     }
-    
-//    public String getArtikel(String spin1){
-//    	String[] columns = new String[]{	KEY_ARTIKELBEZEICHNUNG, KEY_ARTIKELPREIS,KEY_ARTIKELSTANDORT };
-//    	  String selectQuery;
-//             selectQuery = "SELECT  * FROM " + TABLE_ARTICLE + " WHERE bildname ='"+spin1.toLowerCase()+"'" ;
-//     	// selectQuery = "SELECT * FROM " + TABLE_LABELS2;
-//       
-//          
-//         SQLiteDatabase db = this.getReadableDatabase();
-//          Cursor cursor = db.rawQuery(selectQuery,null);
-//   
-//    	String result="";
-//    	
-//    	int bez = cursor.getColumnIndex(KEY_ARTIKELBEZEICHNUNG);
-//    	int preis = cursor.getColumnIndex(KEY_ARTIKELPREIS);
-//    	int ort= cursor.getColumnIndex(KEY_ARTIKELSTANDORT);
-//    	
-//    	for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()){
-//    		result = result + cursor.getString(bez)+ " "+ cursor.getString(preis)+" "+cursor.getString(ort)+"\n";
-//    		
-//    	}
-//    	return result;
-//    }
+   
     
     /**
      * Gibt alle Artikel die zu einer Produktkategorie gehören zurück. 
@@ -502,6 +376,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 		  return result;
 	}
 	
+	/**
+	 * Lädt eine Hauptkategorie die zum übergebenen Suchtext passt
+	 * 
+	 * @param searchString
+	 * @return
+	 */
 	public Collection<Hauptkategorie> searchHauptkategorie(String searchString) {
 		Collection<Hauptkategorie> result = new HashSet<Hauptkategorie>();
 		SQLiteDatabase db = this.getReadableDatabase();
@@ -532,6 +412,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 		return result;
 	}
 	
+	/**
+	 * Lädt eine Produktkategorie die zum übergebenen Suchtext passt
+	 * 
+	 * @param searchText
+	 * @return
+	 */
 	public List<Produktkategorie> searchProduktkategorie(String searchText) {
 		List<Produktkategorie> produktkategorien = new ArrayList<Produktkategorie>();
 		SQLiteDatabase db = this.getReadableDatabase();
@@ -563,6 +449,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 	
 
 
+	/**
+	 * Lädt eine Unterkategorie die zum übergebenen Suchtext passt
+	 * 
+	 * @param searchText
+	 * @return
+	 */
 	public List<Unterkategorie> searchUnterkategorie(String searchText) {
 		List<Unterkategorie> unterkategorien = new ArrayList<Unterkategorie>();
 		SQLiteDatabase db = this.getReadableDatabase();
@@ -593,6 +485,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 		
 	}
 	
+	/**
+	 * Sucht eine Artikel der zum übergebenen Suchtext passt
+	 * @param searchText
+	 * @return
+	 */
 	public List<Artikel> searchArtikel(String searchText) {
 		List<Artikel> artikel = new ArrayList<Artikel>();
 		
@@ -626,6 +523,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 		return artikel;
 	}
 	
+	/**
+	 * Lädt eine Produktkategorie anhand der ID
+	 * 
+	 * @param idProduktkategorie
+	 * @return
+	 */
 	public Produktkategorie getProduktkategorieById(int idProduktkategorie) {
 		Produktkategorie result = null;
 		SQLiteDatabase db = this.getReadableDatabase();
@@ -652,6 +555,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 		return result;
 	}
 	
+	/**
+	 * Lädt eine Unerkategorie anhand der ID
+	 * @param idUnterkategorie
+	 * @return
+	 */
 	public Unterkategorie getUnterkategorieById(int idUnterkategorie) {
 		Unterkategorie result = null;
 		SQLiteDatabase db = this.getReadableDatabase();
@@ -678,6 +586,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 		return result;
 	}
 
+	/**
+	 * Holt Hauptkategorien anhand der ID
+	 * 
+	 * @param idHauptkategorie
+	 * @return
+	 */
 	public Hauptkategorie getHauptkategorieById(int idHauptkategorie) {
 		Hauptkategorie result = null;
 		SQLiteDatabase db = this.getReadableDatabase();

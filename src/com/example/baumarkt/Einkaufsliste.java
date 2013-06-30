@@ -19,6 +19,10 @@ import android.widget.Toast;
 import com.example.baumarkt.model.Position;
 import com.example.test.R;
 
+/**
+ * Darstellung des Warenkorbs
+ *
+ */
 public class Einkaufsliste extends Activity {
 	
 	private GridView contentGrid;
@@ -32,6 +36,7 @@ public class Einkaufsliste extends Activity {
 		System.out.println("Activity Einkaufsliste started....");
 		setContentView(R.layout.activity_einkaufsliste);
 		
+		// Tabelle für die Spaltenbeschriftungen
 		headlineResultGrid = (GridView) findViewById(R.id.gridView1);
 		contentGrid = (GridView) findViewById(R.id.gridView2);
 		TextView test = (TextView) findViewById(R.id.textView1);
@@ -58,16 +63,19 @@ public class Einkaufsliste extends Activity {
 		String[] contentList = new String[StartPoint.WARENKORB.getBestellliste().size() * 4];
 		int position = 1;
 		int count = 0;
+		// Füllen des Arrays für die Darstellung des Warenkorbs. Position 1, Position, 2: Berzeichnung, 3: Menge, 4: Summe des Preises
 		for (Position p : StartPoint.WARENKORB.getBestellliste()) {
 			contentList[count] = String.valueOf(position);
 			contentList[++count] = p.getArtikel().getBezeichnung();
 			contentList[++count] = String.valueOf(p.getMenge());
+			// Ermittlung des Gesamtpreises, da in einer Position der Artikel mehrfach drin sein kann:
 			contentList[++count] = nf.format(p.getArtikel().getPreis() * p.getMenge()) + " €";
 			count++;
 			position++;
 		}
 		
 		
+		// Tabelle contentGrid mit den Inhalten des Warenkorbs
 		ArrayAdapter<String> resultContentAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, contentList);
 		contentGrid.setAdapter(resultContentAdapter);
 		
