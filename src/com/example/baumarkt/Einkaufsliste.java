@@ -1,5 +1,7 @@
 package com.example.baumarkt;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.List;
 
 import android.app.Activity;
@@ -21,10 +23,12 @@ public class Einkaufsliste extends Activity {
 	
 	private GridView contentGrid;
 	private GridView headlineResultGrid;
+	private DecimalFormat nf;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		nf = new DecimalFormat("##.##");
 		System.out.println("Activity Einkaufsliste started....");
 		setContentView(R.layout.activity_einkaufsliste);
 		
@@ -58,7 +62,7 @@ public class Einkaufsliste extends Activity {
 			contentList[count] = String.valueOf(position);
 			contentList[++count] = p.getArtikel().getBezeichnung();
 			contentList[++count] = String.valueOf(p.getMenge());
-			contentList[++count ] = String.valueOf(p.getArtikel().getPreis() * p.getMenge());
+			contentList[++count] = nf.format(p.getArtikel().getPreis() * p.getMenge()) + " €";
 			count++;
 			position++;
 		}

@@ -11,6 +11,7 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.SurfaceView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.example.baumarkt.model.Artikel;
@@ -62,7 +63,7 @@ public class MapActitivity extends Activity {
 			e.printStackTrace();
 		}
 		
-		RelativeLayout rl = (RelativeLayout) findViewById(R.id.rlmap);
+		LinearLayout rl = (LinearLayout) findViewById(R.id.rlmap);
 		
 		
 		Bundle input = getIntent().getExtras();
