@@ -10,7 +10,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
+import android.view.SurfaceView;
+import android.widget.RelativeLayout;
 
 import com.example.baumarkt.model.Artikel;
 import com.example.test.R;
@@ -61,6 +62,9 @@ public class MapActitivity extends Activity {
 			e.printStackTrace();
 		}
 		
+		RelativeLayout rl = (RelativeLayout) findViewById(R.id.rlmap);
+		
+		
 		Bundle input = getIntent().getExtras();
 		if (input != null) {
 			int artikelid = input.getInt("ARTICLE_ID");
@@ -75,10 +79,10 @@ public class MapActitivity extends Activity {
 		System.out.println("Markiere Standort: " + standort[0] + " / " + standort[1]);
 		
 		DrawView drawView = new DrawView(this);
-//		drawView.setBackgroundColor(Color.WHITE);
-		drawView.setBackground(this.getResources().getDrawable(this.getResources().getIdentifier("backgroundbaumarkt", "drawable", "com.example.test")));
+		drawView.setBackgroundResource(R.drawable.backgroundbaumarkt);
 		drawView.newDrawPositionCircle(standort[0], standort[1]);
-		setContentView(drawView);
+//		setContentView(drawView);
+		rl.addView(drawView);
 	}
 
 	@Override
@@ -90,7 +94,7 @@ public class MapActitivity extends Activity {
 	
 	
 	
-	public class DrawView extends View {
+	public class DrawView extends SurfaceView {
 		
 		private Paint mPaint;
 		private int circleX;
@@ -112,6 +116,8 @@ public class MapActitivity extends Activity {
 		public void onDraw(Canvas canvas) {
 			mPaint.setColor(Color.RED);
 			canvas.drawCircle(circleX, circleY, 10, mPaint);
+			
+			invalidate();
 		}
 	}
 }

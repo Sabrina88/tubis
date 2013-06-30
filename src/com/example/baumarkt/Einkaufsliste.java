@@ -1,6 +1,9 @@
 package com.example.baumarkt;
 
+import java.util.List;
+
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -9,6 +12,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.baumarkt.model.Position;
 import com.example.test.R;
@@ -66,9 +70,25 @@ public class Einkaufsliste extends Activity {
 		contentGrid.setOnItemClickListener(new OnItemClickListener() {
 			
 			public void onItemClick(AdapterView<?> parent, View v, int pos, long id) {
+				System.out.println("Pressed on Warenkorb: pos: " + pos + " / " + id);
+				Bundle b = new Bundle();
+				List<Position> bestellliste = StartPoint.WARENKORB.getBestellliste();
+				Position p = bestellliste.get(pos / 4);
+				b.putInt("ARTICLE_ID", p.getArtikel().getId());
+				System.out.println("Warenkorb: put ID " + p.getArtikel().getId() + " to Map");
+				try{
+					Intent openStartingPoint = new Intent("com.example.test.MAP");
+					openStartingPoint.putExtras(b);
+					startActivity(openStartingPoint);
+					}catch(Exception e){
+						System.out.println(e.getMessage());
+						e.printStackTrace();
+					}
 			}
 		});
 		
+		
+		Toast.makeText(getApplicationContext(), "Klicken Sie auf die Position um den Standort anzuzeigen", Toast.LENGTH_LONG).show();
 	}
 
 	@Override
