@@ -433,8 +433,11 @@ public class MainActivity extends FragmentActivity implements OnItemSelectedList
 				dialogWarenkorbAdd.show();
 			}
 			else if (item == 2) {
+				Bundle b = new Bundle();
+				b.putInt("ARTICLE_ID", action.getArtikelId());
 				try{
 					Intent openStartingPoint = new Intent("com.example.test.MAP");
+					openStartingPoint.putExtras(b);
 					startActivity(openStartingPoint);
 					}catch(Exception e){
 						System.out.println(e.getMessage());

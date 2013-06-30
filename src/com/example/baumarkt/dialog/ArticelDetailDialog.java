@@ -68,20 +68,7 @@ public class ArticelDetailDialog extends DialogFragment {
 	    // Setzen des Bildes des Artikels
 	    ImageView image = (ImageView) v.findViewById(R.id.imageView1);
 	    image.setImageResource(R.drawable.keinbild);
-	    // Holen aller verfügbaren Bilder für diese APP:
-//	    Field[] drawables = android.R.drawable.class.getFields();
-//	    for (Field f : drawables) {
-//	        try {
-//	            System.out.println("R.drawable." + f.getName());
-//	            String searchString = f.getName().substring(0, f.getName().indexOf("."));
-//	            System.out.println(searchString + " / " + artikel.getBildname());
-//	            if(searchString.equals(artikel.getBildname())) {
-//	            	System.out.println("Found!");
-//	            }
-//	        } catch (Exception e) {
-//	            e.printStackTrace();
-//	        }
-//	    }
+
 	    String fileName = artikel.getBildname();
 	    int id = this.getResources().getIdentifier(fileName, "drawable", "com.example.test");
 	    System.out.println("Found id: " + id + " for " + fileName);
