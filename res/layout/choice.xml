@@ -21,25 +21,27 @@
         android:id="@+id/imageButton1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageButton2"
-        android:layout_toLeftOf="@+id/imageButton3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/imageButton2"
         android:src="@drawable/kategorie" />
 
     <ImageButton
         android:id="@+id/imageButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
         android:layout_below="@+id/imageView1"
-        android:layout_marginTop="34dp"
-        android:layout_toRightOf="@+id/imageButton1"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="44dp"
         android:src="@drawable/suchenversuch" />
 
     <ImageButton
         android:id="@+id/imageButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/imageButton1"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="39dp"
         android:src="@drawable/warenkorb" />
 
 </RelativeLayout>
